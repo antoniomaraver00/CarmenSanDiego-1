@@ -19,13 +19,13 @@ public interface Viajable {
 	
 	
 	/**
-	 * El protagonista viajo y le doy mis pistas
+	 * El protagonista ha llegado y le doy mis pistas
 	 * @return
 	 */
 	public List<Pista> protagonistaHaLlegado();
 	
 	/**
-	 * El antagonista viajo y tomo las pistas que dejo caer
+	 * El antagonista ha llegado y tomo las pistas que dejo caer
 	 * @param pistas
 	 */
 	public void antagonistaHaLlegado(List<Pista> pistas);
