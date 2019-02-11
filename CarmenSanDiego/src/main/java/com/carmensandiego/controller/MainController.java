@@ -16,12 +16,13 @@ public class MainController extends Application{
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		
-		InitController initController = new InitController();
+		InitController initController = InitController.getSingletonInstance();
 		initController.crearMundo();
 		initController = null;
 		
 		Inicio inicio = new Inicio();
 		inicio.mostrarPantallaInicio(primaryStage);
+		inicio = null;
 	}
 	
 	/**

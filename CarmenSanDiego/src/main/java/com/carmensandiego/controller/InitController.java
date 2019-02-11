@@ -21,10 +21,17 @@ import com.carmensandiego.model.pais.Rusia;
  */
 public class InitController {
 	
+	private static InitController initController = null;
 	private Mundo mundo;
 	
-	public InitController() {
+	private InitController() {
 		mundo = null;
+	}
+	
+	public static  InitController getSingletonInstance() {
+		if (initController == null)
+			initController = new InitController();
+		return initController;
 	}
 	
 	public Mundo crearMundo(){

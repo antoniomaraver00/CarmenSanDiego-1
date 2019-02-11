@@ -1,5 +1,6 @@
 package com.carmensandiego.view;
 
+import com.carmensandiego.controller.HandlerController;
 import com.carmensandiego.model.Mundo;
 
 import javafx.event.EventHandler;
@@ -15,10 +16,10 @@ import javafx.stage.Stage;
 
 public class Inicio {
 	
-	private Mundo mundo;
+	private HandlerController handlerController = null;
 	
 	public Inicio() {
-		mundo = Mundo.getSingletonInstance();
+		handlerController = HandlerController.getSingletonInstance();
 	}
 	
 	public void mostrarPantallaInicio(Stage primaryStage) {
@@ -72,25 +73,9 @@ public class Inicio {
 
 		//Displaying the contents of the stage 
 		primaryStage.show();
-
-		//Creating the mouse event handler 
-		EventHandler<MouseEvent> botonEnviarEventHandler = new EventHandler<MouseEvent>() { 
-			@Override 
-			public void handle(MouseEvent e) { 
-				mundo.crearProtagonista(textFieldName.getText());
-				primaryStage.hide();
-			} 
-		};
-		//Creating the mouse event handler 
-		EventHandler<MouseEvent> botonLimpiarEventHandler = new EventHandler<MouseEvent>() { 
-			@Override 
-			public void handle(MouseEvent e) { 
-				textFieldName.setText("");
-			} 
-		};  
-		//Registering the event filter 
-		enviar.addEventFilter(MouseEvent.MOUSE_CLICKED, botonEnviarEventHandler);   
-		limpiar.addEventFilter(MouseEvent.MOUSE_CLICKED, botonLimpiarEventHandler);   
+		
+		//Handlers y Eventos de la pantalla de Inicio
+		handlerController.crearHandlerInicio(enviar, limpiar, textFieldName, primaryStage);
 	}
 
 }

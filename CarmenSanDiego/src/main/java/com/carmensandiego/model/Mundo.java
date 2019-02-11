@@ -18,7 +18,7 @@ public class Mundo {
 	private Map<String,Pais> paises;
 	private Protagonista protagonista;
 	
-	public Mundo() {
+	private Mundo() {
 		this.paises = new HashMap<String,Pais>();
 		this.protagonista = new Protagonista();
 	}
