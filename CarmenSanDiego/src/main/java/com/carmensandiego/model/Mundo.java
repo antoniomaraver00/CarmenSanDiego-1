@@ -37,5 +37,9 @@ public class Mundo {
 		this.protagonista.setNombre(protagonista);
 		this.protagonista.setDescripcion("El mejor detective de todos los tiempos");
 	}
+	
+	public Protagonista getProtagonista() {
+		return this.protagonista;
+	}
 
 }

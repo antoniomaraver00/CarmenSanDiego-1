@@ -1,6 +1,7 @@
 package com.carmensandiego.controller;
 
 import com.carmensandiego.model.Mundo;
+import com.carmensandiego.view.Bienvenido;
 
 import javafx.event.EventHandler;
 import javafx.scene.control.TextField;
@@ -10,8 +11,7 @@ import javafx.stage.Stage;
 /**
  * Esta clase es la encargada de manejar y controlar los eventos que ocurren en el mundo.
  * Para cada evento ocurrido debe ser la responsable de cambiar los estados de los personajes,
- * jugadores y objetos del juego.
- * Pide al InitController el mundo creado
+ * jugadores, objetos del juego y vistas.
  * @author martin
  *
  */
@@ -30,19 +30,20 @@ public class EventController {
 		return eventController;
 	}
 	
-	//Creating the mouse event handler 
+	//Creating the mouse event
 	public EventHandler<MouseEvent> enviarNombreJugadorEventHandler(TextField textFieldName, Stage primaryStage){
 		EventHandler<MouseEvent> botonEnviarEventHandler = new EventHandler<MouseEvent>() { 
 			@Override 
 			public void handle(MouseEvent e) { 
 				mundo.crearProtagonista(textFieldName.getText());
-				primaryStage.hide();
+				Bienvenido bienvenido = new Bienvenido();
+				bienvenido.mostrarPantallaBienvenido(primaryStage);
 			} 
 		};
 		return botonEnviarEventHandler;
 	}
 	
-	//Creating the mouse event handler 
+	//Creating the mouse event 
 	public EventHandler<MouseEvent> limpiarNombreJugadorEventHandler(TextField textFieldName, Stage primaryStage){
 		EventHandler<MouseEvent> botonLimpiarEventHandler = new EventHandler<MouseEvent>() { 
 			@Override 
