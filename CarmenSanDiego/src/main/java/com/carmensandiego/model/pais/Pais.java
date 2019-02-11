@@ -36,18 +36,18 @@ public abstract class Pais implements Viajable{
 		return nombre;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
 	public String getDescripcion() {
 		return descripcion;
 	}
-
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
 	
+	public List<Espacio> getEspacios() {
+		return espacios;
+	}
+
+	public PistasAcumuladas getPistasAcumuladas() {
+		return pistasAcumuladas;
+	}
+
 	public void agregarEspacio(Espacio espacio) {
 		this.espacios.add(espacio);
 	}
@@ -65,6 +65,9 @@ public abstract class Pais implements Viajable{
 	public void antagonistaHaLlegado(List<Pista> pistas) {
 		this.pistasAcumuladas.acumularPistas(pistas);		
 	}
-
 	
+	@Override
+	public Pais viajeroHaLlegado() {
+		return this;
+	}
 }

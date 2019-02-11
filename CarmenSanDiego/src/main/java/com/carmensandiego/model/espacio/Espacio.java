@@ -56,5 +56,10 @@ public abstract class Espacio implements Visitable{
 	public void serVisitadoPorAntagonista(List<Pista> pistasDelAntagonista) {
 		this.personajeSecundario.agregarPistas(pistasDelAntagonista);
 	}
+	
+	@Override
+	public Espacio serVisitado() {
+		return this;
+	}
 
 }

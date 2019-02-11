@@ -1,6 +1,5 @@
 package com.carmensandiego.model.espacio;
 
-import com.carmensandiego.model.interfaz.ViajeroInterface;
 import com.carmensandiego.model.personajes.PersonajeSecundario;
 
 public class Embajada extends Espacio{
@@ -12,16 +11,6 @@ public class Embajada extends Espacio{
 		this.personajeSecundario = new PersonajeSecundario("Celia","Embajadora Residencial de Argentina");
 	}
 
-	@Override
-	public void serVisitado(ViajeroInterface viajero) {
-		// TODO Auto-generated method stub
-		
-	}
 
-	@Override
-	public void despedirVisita() {
-		// TODO Auto-generated method stub
-		
-	}
 
 }

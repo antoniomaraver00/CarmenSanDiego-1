@@ -40,5 +40,9 @@ public class HandlerController {
 		enviar.addEventFilter(MouseEvent.MOUSE_CLICKED, eventController.enviarNombreJugadorEventHandler(textFieldName, primaryStage));   
 		limpiar.addEventFilter(MouseEvent.MOUSE_CLICKED, eventController.limpiarNombreJugadorEventHandler(textFieldName, primaryStage)); 
 	}
+	
+	public void crearHandlerBienvenido(Button empezar, Stage primaryStage) {
+		empezar.addEventFilter(MouseEvent.MOUSE_CLICKED, eventController.empezarEventHandler(primaryStage));
+	}
 
 }

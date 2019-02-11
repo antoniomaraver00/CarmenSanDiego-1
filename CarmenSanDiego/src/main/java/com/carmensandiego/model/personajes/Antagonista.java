@@ -2,19 +2,21 @@ package com.carmensandiego.model.personajes;
 
 import java.util.List;
 
+import com.carmensandiego.model.espacio.Espacio;
 import com.carmensandiego.model.espacio.NingunEspacio;
 import com.carmensandiego.model.interfaz.Viajable;
 import com.carmensandiego.model.interfaz.ViajeroInterface;
 import com.carmensandiego.model.interfaz.Visitable;
 import com.carmensandiego.model.pais.NingunPais;
+import com.carmensandiego.model.pais.Pais;
 import com.carmensandiego.model.pista.Pista;
 import com.carmensandiego.model.pista.PistasAcumuladas;
 
 public class Antagonista extends Personaje implements ViajeroInterface{
 	
-	private Viajable paisActual;
+	private Pais paisActual;
 	
-	private Visitable espacioActual;
+	private Espacio espacioActual;
 	
 	private PistasAcumuladas pistasAcumuladas;
 	
@@ -27,16 +29,14 @@ public class Antagonista extends Personaje implements ViajeroInterface{
 
 	@Override
 	public void viajar(Viajable destino) {
-		this.paisActual.viajeroSeHaIdo(null);;
 		destino.antagonistaHaLlegado(pistasAcumuladas.tirarPistas());
-		this.paisActual = destino;
+		this.paisActual = destino.viajeroHaLlegado();
 	}
 
 	@Override
 	public void visitar(Visitable destino) {
-		this.espacioActual.despedirVisita();
 		destino.serVisitadoPorAntagonista(pistasAcumuladas.tirarPistas());
-		this.espacioActual = destino;
+		this.espacioActual = destino.serVisitado();
 	}
 	
 	@Deprecated

@@ -3,7 +3,6 @@ package com.carmensandiego.model.pais;
 import com.carmensandiego.model.espacio.Espacio;
 import com.carmensandiego.model.espacio.Museo;
 import com.carmensandiego.model.espacio.PlazaMunicipal;
-import com.carmensandiego.model.interfaz.ViajeroInterface;
 
 public class Espania extends Pais {
 	
@@ -13,18 +12,6 @@ public class Espania extends Pais {
 		Espacio museo = new Museo();
 		this.espacios.add(museo);
 		this.espacios.add(plazaMunicipal);
-	}
-
-	@Override
-	public void viajeroHaLlegado(ViajeroInterface viajero) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void viajeroSeHaIdo(ViajeroInterface viajero) {
-		// TODO Auto-generated method stub
-		
 	}
 
 }

@@ -1,5 +1,6 @@
 package com.carmensandiego.view;
 
+import com.carmensandiego.controller.HandlerController;
 import com.carmensandiego.controller.StateController;
 
 import javafx.geometry.Insets;
@@ -13,9 +14,11 @@ import javafx.stage.Stage;
 public class Bienvenido {
 	
 	private StateController stateController = null;
+	private HandlerController handlerController = null;
 	
 	public Bienvenido() {
 		stateController = StateController.getSingletonInstance();
+		handlerController = HandlerController.getSingletonInstance();
 	}
 	
 	public void mostrarPantallaBienvenido(Stage primaryStage) {
@@ -65,6 +68,9 @@ public class Bienvenido {
 
 		//Displaying the contents of the stage 
 		primaryStage.show();
+		
+		//Handlers y Eventos de la pantalla de Bienvenido
+		handlerController.crearHandlerBienvenido(empezar, primaryStage);
 	}
 
 	

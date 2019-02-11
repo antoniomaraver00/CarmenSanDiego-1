@@ -41,5 +41,9 @@ public class Mundo {
 	public Protagonista getProtagonista() {
 		return this.protagonista;
 	}
+	
+	public Pais getPais(String id) {
+		return paises.get(id);
+	}
 
 }

@@ -3,7 +3,7 @@ package com.carmensandiego.controller;
 import com.carmensandiego.model.Mundo;
 
 /**
- * Esta clase se encarga de mantener y actualizar los estados del juego.
+ * Esta clase se encarga de chequear los estados del juego.
  * Actualiza cada vez que hay un cambio y chequea las condiciones para eventos importantes.
  * Muestra a las vistas el estado actual del mundo y del juego
  * Por ejemplo: Finalizar el juego.
