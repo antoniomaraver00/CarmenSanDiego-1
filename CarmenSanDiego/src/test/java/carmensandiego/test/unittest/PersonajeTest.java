@@ -50,7 +50,7 @@ public class PersonajeTest {
 		
 		Viajable espania = new Espania();
 		protagonista.viajar(espania);
-		Assert.assertEquals(espania, protagonista.enQuePaisEstoy());
+		Assert.assertEquals(espania, protagonista.getPaisActual());
 	}
 	
 	@Test
@@ -58,7 +58,7 @@ public class PersonajeTest {
 		
 		ClubNocturno clubNocturno = new ClubNocturno();
 		protagonista.visitar(clubNocturno);
-		Assert.assertEquals(clubNocturno,protagonista.enQueLugarEstoy());
+		Assert.assertEquals(clubNocturno,protagonista.getEspacioActual());
 	}
 	
 	@Test
