@@ -1,5 +1,10 @@
 package com.carmensandiego.controller;
 
+import java.util.List;
+
+import com.carmensandiego.model.espacio.Espacio;
+import com.carmensandiego.view.BotonEspacio;
+
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -41,8 +46,23 @@ public class HandlerController {
 		limpiar.addEventFilter(MouseEvent.MOUSE_CLICKED, eventController.limpiarNombreJugadorEventHandler(textFieldName, primaryStage)); 
 	}
 	
+	/**
+	 * Handler para la vista de Bienvenido.
+	 * Mostrar introduccion.
+	 * Empezar el juego.
+	 * @param empezar
+	 * @param primaryStage
+	 */
 	public void crearHandlerBienvenido(Button empezar, Stage primaryStage) {
 		empezar.addEventFilter(MouseEvent.MOUSE_CLICKED, eventController.empezarEventHandler(primaryStage));
+	}
+	
+	public void crearHandlerUbicacion(List<BotonEspacio> espacios, Stage primaryStage) {
+		for (BotonEspacio botonEspacio : espacios) {
+			Button boton = botonEspacio.getBoton();
+			Espacio espacio = botonEspacio.getEspacio();
+			boton.addEventFilter(MouseEvent.MOUSE_CLICKED, eventController.protagonistaVisita(espacio, primaryStage));
+		}
 	}
 
 }

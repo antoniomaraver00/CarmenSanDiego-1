@@ -1,6 +1,7 @@
 package com.carmensandiego.controller;
 
 import com.carmensandiego.model.Mundo;
+import com.carmensandiego.model.espacio.Espacio;
 import com.carmensandiego.model.interfaz.ViajeroInterface;
 import com.carmensandiego.view.Bienvenido;
 import com.carmensandiego.view.Ubicacion;
@@ -65,9 +66,23 @@ public class EventController {
 				viajero.viajar(mundo.getPais("ARGENTINA"));
 				viajero.visitar(mundo.getPais("ARGENTINA").getEspacios().get(0));
 				Ubicacion ubicacion = new Ubicacion();
-				ubicacion.mostrarPantallaUbicacionInicial(primaryStage);
+				ubicacion.mostrarPantallaUbicacion(primaryStage);
 			} 
 		}; 
 		return botonEmpezarEventHandler;
+	}
+
+	//Creating the mouse event
+	public EventHandler<MouseEvent> protagonistaVisita(Espacio espacio, Stage primaryStage) {
+		EventHandler<MouseEvent> botonVisitarEventHandler = new EventHandler<MouseEvent>() { 
+			@Override 
+			public void handle(MouseEvent e) {
+				ViajeroInterface viajero = mundo.getProtagonista();
+				viajero.visitar(espacio);
+				Ubicacion ubicacion = new Ubicacion();
+				ubicacion.mostrarPantallaUbicacion(primaryStage);
+			} 
+		}; 
+		return botonVisitarEventHandler;
 	}
 }
