@@ -3,7 +3,9 @@ package com.carmensandiego.controller;
 import java.util.List;
 
 import com.carmensandiego.model.espacio.Espacio;
+import com.carmensandiego.model.pais.Pais;
 import com.carmensandiego.view.BotonEspacio;
+import com.carmensandiego.view.BotonPais;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -57,11 +59,16 @@ public class HandlerController {
 		empezar.addEventFilter(MouseEvent.MOUSE_CLICKED, eventController.empezarEventHandler(primaryStage));
 	}
 	
-	public void crearHandlerUbicacion(List<BotonEspacio> espacios, Stage primaryStage) {
+	public void crearHandlerUbicacion(List<BotonEspacio> espacios, List<BotonPais> paises, Stage primaryStage) {
 		for (BotonEspacio botonEspacio : espacios) {
 			Button boton = botonEspacio.getBoton();
 			Espacio espacio = botonEspacio.getEspacio();
 			boton.addEventFilter(MouseEvent.MOUSE_CLICKED, eventController.protagonistaVisita(espacio, primaryStage));
+		}
+		for (BotonPais botonPais : paises) {
+			Button boton = botonPais.getBoton();
+			Pais pais = botonPais.getPais();
+			boton.addEventFilter(MouseEvent.MOUSE_CLICKED, eventController.protagonistaViaja(pais,primaryStage));
 		}
 	}
 

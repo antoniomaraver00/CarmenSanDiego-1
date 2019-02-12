@@ -7,6 +7,7 @@ import com.carmensandiego.controller.HandlerController;
 import com.carmensandiego.controller.StateController;
 import com.carmensandiego.model.Mundo;
 import com.carmensandiego.model.espacio.Espacio;
+import com.carmensandiego.model.pais.Pais;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -38,6 +39,11 @@ public class Ubicacion {
 			espacios.add(new BotonEspacio(espacio));
 		}
 		
+		List<BotonPais> paises = new ArrayList<BotonPais>();
+		for (Pais pais : mundo.obtenerPaisesDisponiblesParaProtagonista()) {
+			paises.add(new BotonPais(pais));
+		}
+		
 		//Creating a Grid Pane 
 		GridPane gridPane = new GridPane();    
 
@@ -64,6 +70,12 @@ public class Ubicacion {
 			gridPane.add(botonEspacio.getBoton(), j, i);
 			j++;
 		}
+		for (BotonPais botonPais : paises) {
+			int i = 4;
+			int j = 0;
+			gridPane.add(botonPais.getBoton(), j, i);
+			j++;
+		}
 		
 		//Styling nodes
 		country.setStyle("-fx-font: normal bold 30px 'serif' "); 
@@ -81,7 +93,7 @@ public class Ubicacion {
 		primaryStage.show();
 		
 		//Handlers y Eventos de la pantalla de Ubicacion
-		handlerController.crearHandlerUbicacion(espacios, primaryStage);
+		handlerController.crearHandlerUbicacion(espacios, paises, primaryStage);
 	}
 	
 }
