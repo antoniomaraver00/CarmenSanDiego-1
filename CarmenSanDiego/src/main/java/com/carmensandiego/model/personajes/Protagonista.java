@@ -26,6 +26,18 @@ public class Protagonista extends Personaje implements ViajeroInterface{
 		this.paisActual = new NingunPais();
 		this.espacioActual = new NingunEspacio();
 	}
+	
+	public PistasAcumuladas getPistasAcumuladas() {
+		return pistasAcumuladas;
+	}
+
+	public Pais getPaisActual() {
+		return paisActual;
+	}
+
+	public Espacio getEspacioActual() {
+		return espacioActual;
+	}
 
 	@Override
 	public void viajar(Viajable destino) {
@@ -37,16 +49,6 @@ public class Protagonista extends Personaje implements ViajeroInterface{
 	public void visitar(Visitable destino) {
 		this.pistasAcumuladas.acumularPistas(destino.serVisitadoPorProtagonista());
 		this.espacioActual = destino.serVisitado();
-	}
-	
-	@Deprecated
-	public Pais enQuePaisEstoy() {
-		return this.paisActual;
-	}
-	
-	@Deprecated
-	public Espacio enQueLugarEstoy() {
-		return this.espacioActual;
 	}
 	
 	@Deprecated
