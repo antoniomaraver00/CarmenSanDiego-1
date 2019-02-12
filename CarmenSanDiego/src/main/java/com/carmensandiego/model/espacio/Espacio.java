@@ -9,6 +9,8 @@ import com.carmensandiego.model.pista.Pista;
 
 public abstract class Espacio implements Visitable{
 	
+	protected String id;
+	
 	protected String nombre;
 	
 	protected String descripcion;
@@ -18,9 +20,14 @@ public abstract class Espacio implements Visitable{
 	protected ViajeroInterface visita;
 
 	public Espacio() {
+		this.id = "";
 		this.nombre = "";
 		this.descripcion = "";
 		this.personajeSecundario = new PersonajeSecundario();
+	}
+	
+	public String getId() {
+		return id;
 	}
 	
 	public String getNombre() {
