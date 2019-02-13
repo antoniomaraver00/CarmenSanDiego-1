@@ -1,6 +1,7 @@
 package com.carmensandiego.view;
 
 import com.carmensandiego.controller.HandlerController;
+import com.carmensandiego.model.parametria.ParametriaVista;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -34,14 +35,14 @@ public class Inicio {
 		GridPane gridPane = new GridPane();    
 
 		//Setting size for the pane 
-		gridPane.setMinSize(500, 500);
+		gridPane.setMinSize(ParametriaVista.WIDTH.getValue(), ParametriaVista.HEIGHT.getValue());
 
 		//Setting the padding  
 		gridPane.setPadding(new Insets(10, 10, 10, 10)); 
 
 		//Setting the vertical and horizontal gaps between the columns 
-		gridPane.setVgap(5); 
-		gridPane.setHgap(5);       
+		gridPane.setVgap(10); 
+		gridPane.setHgap(10);       
 
 		//Setting the Grid alignment 
 		gridPane.setAlignment(Pos.CENTER); 

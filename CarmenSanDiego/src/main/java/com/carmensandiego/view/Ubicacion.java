@@ -8,6 +8,7 @@ import com.carmensandiego.controller.StateController;
 import com.carmensandiego.model.Mundo;
 import com.carmensandiego.model.espacio.Espacio;
 import com.carmensandiego.model.pais.Pais;
+import com.carmensandiego.model.parametria.ParametriaVista;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -48,14 +49,14 @@ public class Ubicacion {
 		GridPane gridPane = new GridPane();    
 
 		//Setting size for the pane 
-		gridPane.setMinSize(1500, 1500);
+		gridPane.setMinSize(ParametriaVista.WIDTH.getValue(), ParametriaVista.HEIGHT.getValue());
 
 		//Setting the padding  
 		gridPane.setPadding(new Insets(10, 10, 10, 10)); 
 
 		//Setting the vertical and horizontal gaps between the columns 
-		gridPane.setVgap(5); 
-		gridPane.setHgap(5);       
+		gridPane.setVgap(10); 
+		gridPane.setHgap(10);       
 
 		//Setting the Grid alignment 
 		gridPane.setAlignment(Pos.CENTER); 
