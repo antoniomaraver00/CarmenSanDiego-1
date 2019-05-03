@@ -23,5 +23,10 @@ public interface Viajable {
 	 * @param pistas
 	 */
 	public void antagonistaHaLlegado(List<Pista> pistas);
+	
+	/**
+	 * Ubica al viajero en mi primer lugar disponible.
+	 */
+	public void ubicarViajeroInicialmente(ViajeroInterface viajero);
 
 }

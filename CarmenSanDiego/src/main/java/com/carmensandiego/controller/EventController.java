@@ -65,7 +65,8 @@ public class EventController {
 			public void handle(MouseEvent e) {
 				ViajeroInterface viajero = mundo.getProtagonista();
 				viajero.viajar(mundo.getPais("ARGENTINA"));
-				viajero.visitar(mundo.getPais("ARGENTINA").getEspacios().get(0));
+				//TODO: Otra manera de setearlo en la casa.
+				viajero.visitar(mundo.getPais("ARGENTINA").getEspacios().get(1));
 				Ubicacion ubicacion = new Ubicacion();
 				ubicacion.mostrarPantallaUbicacion(primaryStage);
 			} 

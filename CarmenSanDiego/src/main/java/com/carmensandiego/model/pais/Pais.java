@@ -3,8 +3,10 @@ package com.carmensandiego.model.pais;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.carmensandiego.model.espacio.Aeropuerto;
 import com.carmensandiego.model.espacio.Espacio;
 import com.carmensandiego.model.interfaz.Viajable;
+import com.carmensandiego.model.interfaz.ViajeroInterface;
 import com.carmensandiego.model.pista.Pista;
 import com.carmensandiego.model.pista.PistasAcumuladas;
 
@@ -31,6 +33,7 @@ public abstract class Pais implements Viajable{
 		this.descripcion = descripcion;
 		this.espacios = new ArrayList<Espacio>();
 		this.pistasAcumuladas = new PistasAcumuladas();
+		this.espacios.add(new Aeropuerto(this.nombre));
 	}
 
 	public String getNombre() {
@@ -70,5 +73,10 @@ public abstract class Pais implements Viajable{
 	@Override
 	public Pais viajeroHaLlegado() {
 		return this;
+	}
+	
+	@Override
+	public void ubicarViajeroInicialmente(ViajeroInterface viajero) {
+		viajero.visitar(this.espacios.get(0));
 	}
 }

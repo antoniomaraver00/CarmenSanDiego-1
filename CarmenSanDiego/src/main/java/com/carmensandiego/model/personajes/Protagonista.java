@@ -43,6 +43,7 @@ public class Protagonista extends Personaje implements ViajeroInterface{
 	public void viajar(Viajable destino) {
 		this.pistasAcumuladas.acumularPistas(destino.protagonistaHaLlegado());
 		this.paisActual = destino.viajeroHaLlegado();
+		destino.ubicarViajeroInicialmente(this);
 	}
 
 	@Override

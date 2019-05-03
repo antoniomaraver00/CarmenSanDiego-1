@@ -59,6 +59,12 @@ public class HandlerController {
 		empezar.addEventFilter(MouseEvent.MOUSE_CLICKED, eventController.empezarEventHandler(primaryStage));
 	}
 	
+	/**
+	 * Handler para la vista de Ubicacion.
+	 * @param espacios
+	 * @param paises
+	 * @param primaryStage
+	 */
 	public void crearHandlerUbicacion(List<BotonEspacio> espacios, List<BotonPais> paises, Stage primaryStage) {
 		for (BotonEspacio botonEspacio : espacios) {
 			Button boton = botonEspacio.getBoton();
