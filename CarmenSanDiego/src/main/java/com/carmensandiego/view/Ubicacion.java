@@ -65,15 +65,15 @@ public class Ubicacion {
 		gridPane.add(country, 0, 0); 
 		gridPane.add(space, 0, 1); 
 		gridPane.add(message, 0, 2);
+		int i = 3;
+		int j = 0;
 		for (BotonEspacio botonEspacio : espacios) {
-			int i = 3;
-			int j = 0;
 			gridPane.add(botonEspacio.getBoton(), j, i);
 			j++;
 		}
+		i = 4;
+		j = 0;
 		for (BotonPais botonPais : paises) {
-			int i = 4;
-			int j = 0;
 			gridPane.add(botonPais.getBoton(), j, i);
 			j++;
 		}
