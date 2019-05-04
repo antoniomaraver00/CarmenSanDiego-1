@@ -4,7 +4,9 @@ import com.carmensandiego.model.Mundo;
 import com.carmensandiego.model.espacio.Espacio;
 import com.carmensandiego.model.interfaz.ViajeroInterface;
 import com.carmensandiego.model.pais.Pais;
+import com.carmensandiego.model.parametria.ParametriaTime;
 import com.carmensandiego.view.Bienvenido;
+import com.carmensandiego.view.Fin;
 import com.carmensandiego.view.Ubicacion;
 
 import javafx.event.EventHandler;
@@ -22,9 +24,11 @@ import javafx.stage.Stage;
 public class EventController {
 	
 	private static EventController eventController = null;
+	private StateController stateController = null;
 	private Mundo mundo = null;
 	
 	private EventController() {
+		this.stateController = StateController.getSingletonInstance();
 		this.mundo = Mundo.getSingletonInstance();
 	}
 	
@@ -42,6 +46,7 @@ public class EventController {
 				mundo.crearProtagonista(textFieldName.getText());
 				Bienvenido bienvenido = new Bienvenido();
 				bienvenido.mostrarPantallaBienvenido(primaryStage);
+				bienvenido = null;
 			} 
 		};
 		return botonEnviarEventHandler;
@@ -69,6 +74,7 @@ public class EventController {
 				viajero.visitar(mundo.getPais("ARGENTINA").getEspacios().get(1));
 				Ubicacion ubicacion = new Ubicacion();
 				ubicacion.mostrarPantallaUbicacion(primaryStage);
+				ubicacion = null;
 			} 
 		}; 
 		return botonEmpezarEventHandler;
@@ -81,8 +87,16 @@ public class EventController {
 			public void handle(MouseEvent e) {
 				ViajeroInterface viajero = mundo.getProtagonista();
 				viajero.visitar(espacio);
-				Ubicacion ubicacion = new Ubicacion();
-				ubicacion.mostrarPantallaUbicacion(primaryStage);
+				stateController.avanzarTiempo(ParametriaTime.VISIT_TIME.getValue());
+				if(stateController.finDeJuego()){
+					Fin fin = new Fin();
+					fin.mostrarPantallaFin(primaryStage);
+					fin = null;
+				}else {
+					Ubicacion ubicacion = new Ubicacion();
+					ubicacion.mostrarPantallaUbicacion(primaryStage);
+					ubicacion = null;
+				}
 			} 
 		}; 
 		return botonVisitarEventHandler;
@@ -95,10 +109,29 @@ public class EventController {
 			public void handle(MouseEvent e) {
 				ViajeroInterface viajero = mundo.getProtagonista();
 				viajero.viajar(pais);
-				Ubicacion ubicacion = new Ubicacion();
-				ubicacion.mostrarPantallaUbicacion(primaryStage);
+				stateController.avanzarTiempo(ParametriaTime.TRAVEL_TIME.getValue());
+				if(stateController.finDeJuego()){
+					Fin fin = new Fin();
+					fin.mostrarPantallaFin(primaryStage);
+					fin = null;
+				}else {
+					Ubicacion ubicacion = new Ubicacion();
+					ubicacion.mostrarPantallaUbicacion(primaryStage);
+					ubicacion = null;
+				}
 			} 
 		};
 		return botonViajarEventHandler;
+	}
+
+	//Creating the mouse event
+	public EventHandler<MouseEvent> terminarJuego(Stage primaryStage) {
+		EventHandler<MouseEvent> botonSalirEventHandler = new EventHandler<MouseEvent>() {
+			@Override
+			public void handle(MouseEvent e) {
+				primaryStage.close();
+			}
+		};
+		return botonSalirEventHandler;
 	}
 }

@@ -78,4 +78,14 @@ public class HandlerController {
 		}
 	}
 
+	/**
+	 * Handler para la vista de Fin.
+	 * @param salir
+	 * @param primaryStage
+	 */
+	public void crearHandlerFin(Button salir, Stage primaryStage) {
+		salir.addEventFilter(MouseEvent.MOUSE_CLICKED, eventController.terminarJuego(primaryStage));
+		
+	}
+
 }
