@@ -35,6 +35,8 @@ public class Ubicacion {
 		Text space = new Text("Lugar Actual: "+ mundo.getProtagonista().getEspacioActual().getNombre());
 		Text message = new Text("Descripcion: "+ mundo.getProtagonista().getEspacioActual().getDescripcion());
 		
+		Text time = new Text("Tiempo Restante: "+stateController.getTiempoRestante());
+		
 		List<BotonEspacio> espacios = new ArrayList<BotonEspacio>();
 		for(Espacio espacio : mundo.obtenerEspaciosDisponiblesParaProtagonista()) {
 			espacios.add(new BotonEspacio(espacio));
@@ -62,16 +64,17 @@ public class Ubicacion {
 		gridPane.setAlignment(Pos.CENTER); 
 		
 		//Arranging all the nodes in the grid 
-		gridPane.add(country, 0, 0); 
-		gridPane.add(space, 0, 1); 
-		gridPane.add(message, 0, 2);
-		int i = 3;
+		gridPane.add(time, 5, 1);
+		gridPane.add(country, 0, 2); 
+		gridPane.add(space, 0, 3); 
+		gridPane.add(message, 0, 4);
+		int i = 5;
 		int j = 0;
 		for (BotonEspacio botonEspacio : espacios) {
 			gridPane.add(botonEspacio.getBoton(), j, i);
 			j++;
 		}
-		i = 4;
+		i = 6;
 		j = 0;
 		for (BotonPais botonPais : paises) {
 			gridPane.add(botonPais.getBoton(), j, i);

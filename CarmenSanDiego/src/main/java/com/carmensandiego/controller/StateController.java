@@ -48,5 +48,9 @@ public class StateController {
 	public Boolean finDeJuego() {
 		return this.timer.tiempoAgotado();
 	}
+	
+	public String getTiempoRestante(){
+		return this.timer.getTiempoRestante();
+	}
 
 }

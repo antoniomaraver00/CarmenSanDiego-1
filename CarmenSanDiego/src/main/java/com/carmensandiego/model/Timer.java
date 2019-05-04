@@ -39,7 +39,6 @@ public class Timer {
 	public void descontarTiempo(Long hours) {
 		if(this.timestamp > 0)
 			this.timestamp -= this.hourToMilis(hours);
-		System.out.println("Tiempo Actual:" + this.timestamp);
 	}
 	
 	/**
@@ -66,5 +65,15 @@ public class Timer {
 	 */
 	public Boolean tiempoAgotado() {
 		return this.timestamp <= 0;
+	}
+
+	/**
+	 * Retorna el tiempo restante
+	 * @return
+	 */
+	public String getTiempoRestante() {
+		Long days = (this.timestamp / milis / secondPerMinute / minutesPerHour / hoursPerDay);
+		Long hours = (this.timestamp / milis / secondPerMinute / minutesPerHour) % hoursPerDay;
+		return new StringBuilder().append("Dias: ").append(days).append(" Horas: ").append(hours).toString();
 	}
 }
