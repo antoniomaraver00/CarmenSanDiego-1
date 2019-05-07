@@ -6,9 +6,9 @@ import java.util.Map;
 import com.carmensandiego.model.Mundo;
 import com.carmensandiego.model.pais.Alemania;
 import com.carmensandiego.model.pais.Argentina;
-import com.carmensandiego.model.pais.Espania;
+import com.carmensandiego.model.pais.Australia;
 import com.carmensandiego.model.pais.Pais;
-import com.carmensandiego.model.pais.Rusia;
+import com.carmensandiego.model.pais.Egipto;
 
 /**
  * Esta clase es responsable de controllar el llamado de crear el mundo
@@ -46,9 +46,9 @@ public class InitController {
 		paises.put("ALEMANIA", alemania);
 		Pais argentina = new Argentina();
 		paises.put("ARGENTINA", argentina);
-		Pais espania = new Espania();
+		Pais espania = new Australia();
 		paises.put("ESPANIA", espania);
-		Pais rusia = new Rusia();
+		Pais rusia = new Egipto();
 		paises.put("RUSIA", rusia);
 		return paises;
 	}

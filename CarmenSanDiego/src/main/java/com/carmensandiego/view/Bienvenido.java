@@ -26,11 +26,13 @@ public class Bienvenido {
 		Text welcome = new Text("Bienvenido");
 		Text name = new Text(stateController.getMundo().getProtagonista().getNombre());
 		Text message = new Text("Eres el ayudante y sucesor del detective mas importante de nuestros tiempos, Wincho.\n"
-				+ "Por desgracia, el ha desaparecido en su busqueda por la Maravilla Nacional de Monterreal.\n"
-				+ "Aparentemente un criminal de sexo femenino ha sido visto en el lugar del crimen.\n"
+				+ "Por desgracia, el ha desaparecido en su busqueda por la Tesoro Nacional de Montreal.\n"
+				+ "El tesoro ha sido identificado como los uniformes de la Policia Montada.\n"
+				+ "Un sospechoso de sexo femenino ha sido visto en el lugar del crimen.\n"
 				+ "Lleva mas de una semana en fuga y Wincho la ha perseguido sin parar, pero con resultados fallidos.\n"
 				+ "Tu mision es encontrarla a ella y a tu mentor antes del Domingo a las 17hs o el tesoro se perderá por siempre y habra un conflicto internacional.\n"
-				+ "Hemos recuperado el ultimo BackUp de pistas que Wincho recolectó. Esperemos que te sea de ayuda para empezar tu camino. Buena suerte!");
+				+ "Hemos recuperado el ultimo BackUp de pistas que Wincho recolectó. Esperemos que te sea de ayuda para empezar tu camino.\n "
+				+ "Buena suerte, "+name+"!");
 		Button empezar = new Button("Empezar"); 
 		//Creating a Grid Pane 
 		GridPane gridPane = new GridPane();    

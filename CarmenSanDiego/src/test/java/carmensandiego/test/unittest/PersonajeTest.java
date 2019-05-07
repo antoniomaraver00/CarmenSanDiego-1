@@ -10,7 +10,7 @@ import com.carmensandiego.model.espacio.Home;
 import com.carmensandiego.model.interfaz.Viajable;
 import com.carmensandiego.model.interfaz.Visitable;
 import com.carmensandiego.model.pais.Argentina;
-import com.carmensandiego.model.pais.Espania;
+import com.carmensandiego.model.pais.Australia;
 import com.carmensandiego.model.personajes.Antagonista;
 import com.carmensandiego.model.personajes.PersonajeSecundario;
 import com.carmensandiego.model.personajes.Protagonista;
@@ -48,7 +48,7 @@ public class PersonajeTest {
 	@Test
 	public void elPersonajeDebePoderViajarAUnVisitable() {
 		
-		Viajable espania = new Espania();
+		Viajable espania = new Australia();
 		protagonista.viajar(espania);
 		Assert.assertEquals(espania, protagonista.getPaisActual());
 	}
@@ -64,7 +64,7 @@ public class PersonajeTest {
 	@Test
 	public void elPersonajePrincipalDebePoderRecolectarPistasDePaisesYLugares() {
 		
-		Espania espania = new Espania();
+		Australia espania = new Australia();
 		ClubNocturno clubNocturno = new ClubNocturno();
 		Embajada embajada = new Embajada();
 		
@@ -92,7 +92,7 @@ public class PersonajeTest {
 		Pista pista1 = new Pista("Pista 1");
 		Pista pista2 = new Pista("Pista 2");
 		
-		Espania espania = new Espania();
+		Australia espania = new Australia();
 		ClubNocturno clubNocturno = new ClubNocturno();
 		
 		espania.agregarEspacio(clubNocturno);

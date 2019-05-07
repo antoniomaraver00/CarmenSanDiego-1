@@ -16,6 +16,8 @@ public abstract class Pais implements Viajable{
 	
 	protected String descripcion;
 	
+	protected String capital;
+	
 	//TODO: Hacer un mapa
 	protected List<Espacio> espacios;
 	
