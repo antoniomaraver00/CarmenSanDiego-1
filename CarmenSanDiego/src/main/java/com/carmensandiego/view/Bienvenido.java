@@ -32,7 +32,7 @@ public class Bienvenido {
 				+ "Lleva mas de una semana en fuga y Wincho la ha perseguido sin parar, pero con resultados fallidos.\n"
 				+ "Tu mision es encontrarla a ella y a tu mentor antes del Domingo a las 17hs o el tesoro se perderá por siempre y habra un conflicto internacional.\n"
 				+ "Hemos recuperado el ultimo BackUp de pistas que Wincho recolectó. Esperemos que te sea de ayuda para empezar tu camino.\n "
-				+ "Buena suerte, "+name+"!");
+				+ "Buena suerte, "+name.getText()+"!");
 		Button empezar = new Button("Empezar"); 
 		//Creating a Grid Pane 
 		GridPane gridPane = new GridPane();    
