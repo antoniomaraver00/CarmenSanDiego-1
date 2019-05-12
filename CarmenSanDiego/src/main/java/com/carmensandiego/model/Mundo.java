@@ -9,10 +9,11 @@ import java.util.stream.Collectors;
 import com.carmensandiego.model.espacio.Espacio;
 import com.carmensandiego.model.pais.Pais;
 import com.carmensandiego.model.personajes.Protagonista;
+import com.carmensandiego.utils.PaisComparator;
 
 /**
- * Representa todo el mundo contenido en la aplicacion
- * @author martin
+ * Representa todo el mundo contenido en la aplicacion.
+ * @author mperez
  *
  */
 public class Mundo {
@@ -33,6 +34,14 @@ public class Mundo {
 		return mundo;
 	}
 	
+	public Protagonista getProtagonista() {
+		return this.protagonista;
+	}
+	
+	public Pais getPais(String id) {
+		return paises.get(id);
+	}
+	
 	public void agregarPaises(Map<String,Pais> paises) {
 		this.paises = paises;
 	}
@@ -42,15 +51,6 @@ public class Mundo {
 		this.protagonista.setDescripcion("El mejor detective de todos los tiempos");
 	}
 	
-	public Protagonista getProtagonista() {
-		return this.protagonista;
-	}
-	
-	public Pais getPais(String id) {
-		return paises.get(id);
-	}
-	
-	//TODO: Devolver objetos diferentes?
 	/**
 	 * Retorna los espacios disponibles donde que puede visitar el protagonista.
 	 * Espacios del Pais Actual.
@@ -68,7 +68,6 @@ public class Mundo {
 		return espacios;
 	}
 	
-	//TODO: Devolver objetos diferentes?
 	/**
 	 * Retorna los paises disponibles donde puede viajar el protagonista.
 	 * @return
@@ -81,6 +80,17 @@ public class Mundo {
 					.filter(p -> p.getNombre() != this.protagonista.getPaisActual().getNombre())
 					.collect(Collectors.toList()));
 		return paises;
+	}
+	
+	/**
+	 * Retorna todos los paises en el mundo ordenados alfabeticamente
+	 * @return
+	 */
+	public List<Pais> obtenerPaisesOrdenadosAlfabeticamente(){
+		return this.paises.values()
+					.stream()
+					.sorted(PaisComparator.alfabeticOrder())
+					.collect(Collectors.toList());
 	}
 
 }

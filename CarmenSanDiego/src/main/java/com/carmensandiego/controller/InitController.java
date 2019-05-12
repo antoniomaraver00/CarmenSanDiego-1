@@ -7,8 +7,9 @@ import com.carmensandiego.model.Mundo;
 import com.carmensandiego.model.pais.Alemania;
 import com.carmensandiego.model.pais.Argentina;
 import com.carmensandiego.model.pais.Australia;
-import com.carmensandiego.model.pais.Pais;
+import com.carmensandiego.model.pais.Canada;
 import com.carmensandiego.model.pais.Egipto;
+import com.carmensandiego.model.pais.Pais;
 
 /**
  * Esta clase es responsable de controllar el llamado de crear el mundo
@@ -48,8 +49,10 @@ public class InitController {
 		paises.put("ARGENTINA", argentina);
 		Pais espania = new Australia();
 		paises.put("ESPANIA", espania);
-		Pais rusia = new Egipto();
-		paises.put("RUSIA", rusia);
+		Pais egipto = new Egipto();
+		paises.put("RUSIA", egipto);
+		Pais canada = new Canada();
+		paises.put("CANADA", canada);
 		return paises;
 	}
 	

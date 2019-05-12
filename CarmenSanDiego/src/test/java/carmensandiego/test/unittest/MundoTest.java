@@ -30,10 +30,10 @@ public class MundoTest {
 		paises.put("ALEMANIA", alemania);
 		Pais argentina = new Argentina();
 		paises.put("ARGENTINA", argentina);
-		Pais espania = new Australia();
-		paises.put("ESPANIA", espania);
-		Pais rusia = new Egipto();
-		paises.put("RUSIA", rusia);
+		Pais australia = new Australia();
+		paises.put("AUSTRALIA", australia);
+		Pais egipto = new Egipto();
+		paises.put("EGIPTO", egipto);
 		mundo.agregarPaises(paises);
 	}
 	
@@ -42,31 +42,33 @@ public class MundoTest {
 		ViajeroInterface viajero = mundo.getProtagonista();
 		viajero.viajar(mundo.getPais("ARGENTINA"));
 		//Argentina tiene
-			//1) Home
-			//2) Club Nocturno
+			//1) Aeropuerto
+			//2) Home
+			//3) Club Nocturno
 		//Protagonista arranca en Home
-		viajero.visitar(mundo.getPais("ARGENTINA").getEspacios().get(0));
-		List<Espacio> espaciosNuevos = mundo.obtenerEspaciosDisponiblesParaProtagonista();
-		List<Espacio> espaciosViejos = mundo.getProtagonista().getPaisActual().getEspacios();
-		Assert.assertTrue(espaciosNuevos.size() == espaciosViejos.size() - 1);
+		viajero.visitar(mundo.getPais("ARGENTINA").getEspacios().get(1));
+		List<Espacio> espaciosDisponibles = mundo.obtenerEspaciosDisponiblesParaProtagonista();
+		List<Espacio> espacios = mundo.getProtagonista().getPaisActual().getEspacios();
+		//Al menos debe ser un tamano menor
+		Assert.assertTrue(espaciosDisponibles.size() == espacios.size() - 1);
 		Espacio original = null;
 		Espacio nuevo = null;
-		for (Espacio espacio : espaciosViejos) {
+		for (Espacio espacio : espacios) {
 			Espacio aux = new ClubNocturno();
-			if(espacio.getNombre() == aux.getNombre())
+			if(espacio.getNombre().equals(aux.getNombre()))
 				original = espacio;
 		}
-		nuevo = espaciosNuevos.get(0);
-		Assert.assertTrue(nuevo.getNombre() == original.getNombre());
+		//Tomamos el club
+		nuevo = espaciosDisponibles.get(1);
+		Assert.assertTrue(nuevo.getNombre().equals(original.getNombre()));
 		//SON EL MISMO OBJETO
-		//Assert.assertNotSame(original, nuevo);
 	}
 
 	@Test
 	public void protagonistaPuedeViajarAOtrosPaises() {
 		ViajeroInterface viajero = mundo.getProtagonista();
 		Pais argentina = mundo.getPais("ARGENTINA");
-		Pais rusia = mundo.getPais("RUSIA");
+		Pais egipto = mundo.getPais("EGIPTO");
 		viajero.viajar(argentina);
 		//Argentina tiene
 			//1) Home
@@ -75,6 +77,6 @@ public class MundoTest {
 		viajero.visitar(argentina.getEspacios().get(0));
 		List<Pais> paisesDisponibles = mundo.obtenerPaisesDisponiblesParaProtagonista();
 		Assert.assertFalse(paisesDisponibles.contains(argentina));
-		Assert.assertTrue(paisesDisponibles.contains(rusia));
+		Assert.assertTrue(paisesDisponibles.contains(egipto));
 	}
 }
