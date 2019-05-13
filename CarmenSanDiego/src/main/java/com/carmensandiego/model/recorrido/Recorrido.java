@@ -39,6 +39,8 @@ public class Recorrido {
 	 * @return
 	 */
 	public Pais obtenerProximoDestino() {
+		if (this.destinos.isEmpty())
+			throw new SinProximosDestinosException();
 		return this.destinos.get(0);
 	}
 	
@@ -57,6 +59,8 @@ public class Recorrido {
 	 * @param destino
 	 */
 	public void registrarUltimoDestino() {
+		if (this.destinos.isEmpty())
+			throw new SinProximosDestinosException();
 		this.visitados.add(this.destinos.remove(0));
 	}
 
