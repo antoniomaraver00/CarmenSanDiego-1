@@ -48,9 +48,9 @@ public class PersonajeTest {
 	@Test
 	public void elPersonajeDebePoderViajarAUnVisitable() {
 		
-		Viajable espania = new Australia();
-		protagonista.viajar(espania);
-		Assert.assertEquals(espania, protagonista.getPaisActual());
+		Viajable australia = new Australia();
+		protagonista.viajar(australia);
+		Assert.assertEquals(australia, protagonista.getPaisActual());
 	}
 	
 	@Test
@@ -64,7 +64,7 @@ public class PersonajeTest {
 	@Test
 	public void elPersonajePrincipalDebePoderRecolectarPistasDePaisesYLugares() {
 		
-		Australia espania = new Australia();
+		Australia australia = new Australia();
 		ClubNocturno clubNocturno = new ClubNocturno();
 		Embajada embajada = new Embajada();
 		
@@ -72,12 +72,12 @@ public class PersonajeTest {
 		Pista pista2 = new Pista("Pista 2");
 		
 		embajada.informarPista(pista1);
-		espania.agregarPista(pista2);
+		australia.agregarPista(pista2);
 		
-		espania.agregarEspacio(embajada);
-		espania.agregarEspacio(clubNocturno);
+		australia.agregarEspacio(embajada);
+		australia.agregarEspacio(clubNocturno);
 		
-		this.protagonista.viajar(espania);
+		this.protagonista.viajar(australia);
 		this.protagonista.visitar(clubNocturno);
 		this.protagonista.visitar(embajada);
 		
@@ -92,14 +92,14 @@ public class PersonajeTest {
 		Pista pista1 = new Pista("Pista 1");
 		Pista pista2 = new Pista("Pista 2");
 		
-		Australia espania = new Australia();
+		Australia australia = new Australia();
 		ClubNocturno clubNocturno = new ClubNocturno();
 		
-		espania.agregarEspacio(clubNocturno);
+		australia.agregarEspacio(clubNocturno);
 		
 		antagonista.setPista(pista1);
 		
-		antagonista.viajar(espania);
+		antagonista.viajar(australia);
 		
 		Integer cantidadPistasAcumuladas = this.antagonista.obtenerPistas().size();
 		

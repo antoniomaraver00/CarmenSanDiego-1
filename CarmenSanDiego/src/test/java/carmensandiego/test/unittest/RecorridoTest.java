@@ -45,5 +45,18 @@ public class RecorridoTest {
 		System.out.println(obtenido.getNombre());
 		Assert.assertTrue(esperado.getNombre().equals(obtenido.getNombre()));
 	}
+	
+	@Test
+	public void registrarRecorridoDebeEliminarDelRecorridoElDestinoVisitado() {
+		Recorrido recorrido = new Recorrido(new ArrayList<Pais>(mundo.obtenerPaisesOrdenadosAlfabeticamente()));
+		Pais destino = recorrido.obtenerProximoDestino();
+		recorrido.registrarUltimoDestino();
+		Pais registrado = recorrido.getVisitados().get(0);
+		Pais proximoDestino = recorrido.obtenerProximoDestino();
+		//El proximo destino debe ser difernte al destino anterior
+		Assert.assertFalse(destino.getNombre().equals(proximoDestino.getNombre()));
+		//El destino debe ser registrado
+		Assert.assertTrue(destino.getNombre().equals(registrado.getNombre()));
+	}
 
 }

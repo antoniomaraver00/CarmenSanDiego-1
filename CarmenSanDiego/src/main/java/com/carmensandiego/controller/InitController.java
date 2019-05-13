@@ -47,10 +47,10 @@ public class InitController {
 		paises.put("ALEMANIA", alemania);
 		Pais argentina = new Argentina();
 		paises.put("ARGENTINA", argentina);
-		Pais espania = new Australia();
-		paises.put("ESPANIA", espania);
+		Pais australia = new Australia();
+		paises.put("AUSTRALIA", australia);
 		Pais egipto = new Egipto();
-		paises.put("RUSIA", egipto);
+		paises.put("EGIPTO", egipto);
 		Pais canada = new Canada();
 		paises.put("CANADA", canada);
 		return paises;

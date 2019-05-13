@@ -15,6 +15,7 @@ import com.carmensandiego.model.interfaz.ViajeroInterface;
 import com.carmensandiego.model.pais.Alemania;
 import com.carmensandiego.model.pais.Argentina;
 import com.carmensandiego.model.pais.Australia;
+import com.carmensandiego.model.pais.Canada;
 import com.carmensandiego.model.pais.Pais;
 import com.carmensandiego.model.pais.Egipto;
 
@@ -34,6 +35,8 @@ public class MundoTest {
 		paises.put("AUSTRALIA", australia);
 		Pais egipto = new Egipto();
 		paises.put("EGIPTO", egipto);
+		Pais canada = new Canada();
+		paises.put("CANADA", canada);
 		mundo.agregarPaises(paises);
 	}
 	
