@@ -31,11 +31,20 @@ public class Antagonista extends Personaje implements ViajeroInterface{
 		this.espacioActual = new NingunEspacio();
 		this.recorrido = new Recorrido();
 	}
+	
+	public Pais getPaisActual() {
+		return paisActual;
+	}
+
+	public Espacio getEspacioActual() {
+		return espacioActual;
+	}
 
 	@Override
 	public void viajar(Viajable destino) {
 		destino.antagonistaHaLlegado(pistasAcumuladas.tirarPistas());
 		this.paisActual = destino.viajeroHaLlegado();
+		destino.ubicarViajeroInicialmente(this);
 	}
 
 	@Override
@@ -57,30 +66,34 @@ public class Antagonista extends Personaje implements ViajeroInterface{
 	/**
 	 * Elige un recorrido por el mundo aleatoriamente.
 	 * PRE: recibe el listado con todos los paises.
+	 * 		El antagonista debe estar en un Pais Actual.
 	 * POST: crea el recorrido aleatoriamente.
-	 * 		 Si esta en un pais actual, no lo cuenta para el recorrido
+	 * 		 No cuenta el Pais Actual para el recorrido.
 	 */
 	public void elegirRecorrido(List<Pais> paises) {
-		//Agrego el listado de numeros posibles
+		//Creo un listado de numeros posibles
 		List<Integer> numerosPosibles = new ArrayList<Integer>();
+		int numerosTotales = 0;
+		//Para cada pais creo un indice que sera agregado como numero posible si el pais no es el actual.
 		for (Pais pais : paises) {
-			int i = 0;
 			if(!this.paisActual.getNombre().equals(pais.getNombre()))
-				numerosPosibles.add(i);
-			i++;
+				numerosPosibles.add(numerosTotales);
+			numerosTotales++;
 		}
 		int numerosGenerados = 0;
 		int min=0;
-        int max=(numerosPosibles.size());
-		while(numerosGenerados != (paises.size()-1)) {
-			//Numeros generados entre num1 y num2, sin decimales (incluyendo el num1 y el num2)
-			int numAleatorio=(int)Math.floor(Math.random()*(min-(max+1))+(max));
-			//Quito el numero posible indexado con ese numero. Que es el mismo numero que el indice.
-			numerosPosibles.remove(numAleatorio);
-			//Actualizo el maximo
-			max=(numerosPosibles.size());
-			//Agrego el pais indexado con ese numero.
-			recorrido.agregarDestino(paises.get(numAleatorio));
+		//El maximo indice de los numeros posibles es la cantidad de numeros posibles menos 1.
+		Integer max=(numerosPosibles.size() -1);
+		while(numerosGenerados < numerosTotales - 1) {
+			//Numeros generados entre min y max, sin decimales (incluyendo el min y el max)
+			int numAleatorio=(int)Math.floor(Math.random()*(max - min));
+			//Recupero y quito el numero posible (indice de pais) indexado con el numero aleatorio.
+			int indexPais = numerosPosibles.remove(numAleatorio);
+			//Actualizo el maximo.
+			max=(numerosPosibles.size() -1);
+			//Agrego el pais indexado con el numero indexado por el numero aleatorio.
+			recorrido.agregarDestino(paises.get(indexPais));
+			numerosGenerados++;
 		}
 	}
 	
@@ -94,6 +107,14 @@ public class Antagonista extends Personaje implements ViajeroInterface{
 	public void seguirRecorrido() {
 		this.viajar(recorrido.obtenerProximoDestino());
 		this.recorrido.registrarUltimoDestino();
+	}
+	
+	/**
+	 * Retorna el proximo destino del Antagonista.
+	 * @return
+	 */
+	public Pais obtenerProximoDestino() {
+		return this.recorrido.obtenerProximoDestino();
 	}
 	
 }

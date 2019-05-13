@@ -1,5 +1,8 @@
 package carmensandiego.test.unittest;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -9,8 +12,12 @@ import com.carmensandiego.model.espacio.Embajada;
 import com.carmensandiego.model.espacio.Home;
 import com.carmensandiego.model.interfaz.Viajable;
 import com.carmensandiego.model.interfaz.Visitable;
+import com.carmensandiego.model.pais.Alemania;
 import com.carmensandiego.model.pais.Argentina;
 import com.carmensandiego.model.pais.Australia;
+import com.carmensandiego.model.pais.Canada;
+import com.carmensandiego.model.pais.Egipto;
+import com.carmensandiego.model.pais.Pais;
 import com.carmensandiego.model.personajes.Antagonista;
 import com.carmensandiego.model.personajes.PersonajeSecundario;
 import com.carmensandiego.model.personajes.Protagonista;
@@ -21,6 +28,9 @@ public class PersonajeTest {
 	private Protagonista protagonista;
 	private Antagonista antagonista;
 	private PersonajeSecundario secundario;
+	
+	private static Integer cantidadPaises = 5;
+	private static Integer paisesDestino = 4;
 	
 	@Before
 	public void initProtagonista() {
@@ -39,10 +49,8 @@ public class PersonajeTest {
 		antagonista = new Antagonista();
 		antagonista.setNombre("Carmen San Diego");
 		antagonista.setDescripcion("Dura y Bella criminal");
-		Viajable paisInicial = new Argentina();
-		Visitable hogar = new Home();
+		Viajable paisInicial = new Canada();
 		antagonista.viajar(paisInicial);
-		antagonista.visitar(hogar);
 	}
 	
 	@Test
@@ -112,6 +120,24 @@ public class PersonajeTest {
 		cantidadPistasAcumuladas = this.antagonista.obtenerPistas().size();
 		
 		Assert.assertTrue(cantidadPistasAcumuladas.equals(0));				
+	}
+	
+	@Test
+	public void antagonistaEligeRecorridoNoDebeIncluirPaisActual() {
+		List<Pais> paises = new ArrayList<Pais>();
+		paises.add(new Argentina());
+		paises.add(new Alemania());
+		paises.add(new Australia());
+		paises.add(new Canada());
+		paises.add(new Egipto());
+		antagonista.elegirRecorrido(paises);
+		//Consultar y avanzar sobre los destinos
+		int count = 0;
+		while(count < paisesDestino) {
+			Assert.assertFalse(antagonista.getPaisActual().getNombre().equals(antagonista.obtenerProximoDestino().getNombre()));
+			antagonista.seguirRecorrido();
+			count++;
+		}
 	}
 
 }
