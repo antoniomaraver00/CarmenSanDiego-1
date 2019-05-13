@@ -3,6 +3,7 @@ package com.carmensandiego.model.recorrido;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.carmensandiego.exception.SinProximosDestinosException;
 import com.carmensandiego.model.pais.Pais;
 
 /**

@@ -1,4 +1,4 @@
-package com.carmensandiego.model.recorrido;
+package com.carmensandiego.exception;
 
 public class SinProximosDestinosException extends RuntimeException {
 
