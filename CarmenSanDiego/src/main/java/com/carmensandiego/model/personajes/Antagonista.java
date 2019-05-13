@@ -67,6 +67,7 @@ public class Antagonista extends Personaje implements ViajeroInterface{
 	 * Elige un recorrido por el mundo aleatoriamente.
 	 * PRE: recibe el listado con todos los paises.
 	 * 		El antagonista debe estar en un Pais Actual.
+	 * 		El Pais Actual existe y esta en el listado de todos los paises.
 	 * POST: crea el recorrido aleatoriamente.
 	 * 		 No cuenta el Pais Actual para el recorrido.
 	 */
@@ -84,6 +85,7 @@ public class Antagonista extends Personaje implements ViajeroInterface{
 		int min=0;
 		//El maximo indice de los numeros posibles es la cantidad de numeros posibles menos 1.
 		Integer max=(numerosPosibles.size() -1);
+		//Solo existe un indice de pais que no sera agregado al listado de numeros posibles.
 		while(numerosGenerados < numerosTotales - 1) {
 			//Numeros generados entre min y max, sin decimales (incluyendo el min y el max)
 			int numAleatorio=(int)Math.floor(Math.random()*(max - min));
