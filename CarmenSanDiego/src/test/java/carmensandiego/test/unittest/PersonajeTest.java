@@ -32,6 +32,7 @@ public class PersonajeTest {
 	
 	private static Integer cantidadPaises = 5;
 	private static Integer paisesDestino = 4;
+	private static Integer sinPistas = 0;
 	
 	@Before
 	public void initProtagonista() {
@@ -113,7 +114,7 @@ public class PersonajeTest {
 		
 		Integer cantidadPistasAcumuladas = this.antagonista.tirarPistas().size();
 		
-		Assert.assertTrue(cantidadPistasAcumuladas.equals(0));
+		Assert.assertTrue(sinPistas.equals(cantidadPistasAcumuladas));
 		
 		antagonista.acumularPista(pista2);
 		
@@ -121,7 +122,7 @@ public class PersonajeTest {
 		
 		cantidadPistasAcumuladas = this.antagonista.tirarPistas().size();
 		
-		Assert.assertTrue(cantidadPistasAcumuladas.equals(0));				
+		Assert.assertTrue(sinPistas.equals(cantidadPistasAcumuladas));				
 	}
 	
 	@Test
