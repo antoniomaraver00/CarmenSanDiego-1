@@ -9,6 +9,7 @@ import com.carmensandiego.model.Mundo;
 import com.carmensandiego.model.espacio.Espacio;
 import com.carmensandiego.model.pais.Pais;
 import com.carmensandiego.model.parametria.ParametriaVista;
+import com.carmensandiego.model.pista.Pista;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -47,6 +48,12 @@ public class Ubicacion {
 			paises.add(new BotonPais(pais));
 		}
 		
+		List<Text> pistas = new ArrayList<Text>();
+		for (Pista pista : mundo.getProtagonista().obtenerPistasAcumuladas()) {
+			Text textPista = new Text(pista.getMensaje());
+			pistas.add(textPista);
+		}
+		
 		//Creating a Grid Pane 
 		GridPane gridPane = new GridPane();    
 
@@ -79,6 +86,13 @@ public class Ubicacion {
 		for (BotonPais botonPais : paises) {
 			gridPane.add(botonPais.getBoton(), j, i);
 			j++;
+		}
+		i = 7;
+		j = 0;
+		for (Text text : pistas) {
+			gridPane.add(text, i, j);
+			text.setStyle("-fx-font: normal bold 20px 'serif' ");
+			i++;
 		}
 		
 		//Styling nodes
