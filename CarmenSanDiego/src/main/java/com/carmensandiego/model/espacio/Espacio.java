@@ -47,11 +47,11 @@ public abstract class Espacio implements Visitable{
 	}
 	
 	public void informarPistas(List<Pista> pistas) {
-		this.personajeSecundario.agregarPistas(pistas);
+		this.personajeSecundario.acumularPistas(pistas);
 	}
 	
 	public void informarPista(Pista pista) {
-		this.personajeSecundario.agregarPista(pista);
+		this.personajeSecundario.acumularPista(pista);
 	}
 	
 	@Override
@@ -61,7 +61,7 @@ public abstract class Espacio implements Visitable{
 
 	@Override
 	public void serVisitadoPorAntagonista(List<Pista> pistasDelAntagonista) {
-		this.personajeSecundario.agregarPistas(pistasDelAntagonista);
+		this.personajeSecundario.acumularPistas(pistasDelAntagonista);
 	}
 	
 	@Override

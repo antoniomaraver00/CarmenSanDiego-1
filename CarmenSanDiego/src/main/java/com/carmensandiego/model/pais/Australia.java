@@ -18,9 +18,9 @@ public class Australia extends Pais {
 		Pista pistaBandera = new Pista("Bandera Azul, Roja y Blanca");
 		Pista pistaEscudo = new Pista("Su escudo esta compuesto por un Canguro y un Emu");
 		Pista pistAnimales = new Pista("Informacion de diversos animales exoticos");
-		this.agregarPista(pistaBandera);
-		this.agregarPista(pistaEscudo);
-		this.agregarPista(pistAnimales);
+		this.acumularPista(pistaBandera);
+		this.acumularPista(pistaEscudo);
+		this.acumularPista(pistAnimales);
 	}
 
 }

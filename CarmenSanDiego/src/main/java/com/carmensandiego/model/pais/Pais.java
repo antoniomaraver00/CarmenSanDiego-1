@@ -58,8 +58,12 @@ public abstract class Pais implements Viajable{
 		this.espacios.add(espacio);
 	}
 	
-	public void agregarPista(Pista pista) {
+	public void acumularPista(Pista pista) {
 		this.pistasAcumuladas.acumularPista(pista);
+	}
+	
+	public void acumularPistas(List<Pista> pistas) {
+		this.pistasAcumuladas.acumularPistas(pistas);
 	}
 	
 	@Override

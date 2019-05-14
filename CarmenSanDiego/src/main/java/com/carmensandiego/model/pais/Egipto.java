@@ -16,9 +16,9 @@ public class Egipto extends Pais {
 		Pista pistaBandera = new Pista("Bandera Roja, Negra y Blanca");
 		Pista pistaEscudo = new Pista("Escudo de Aguila dorada");
 		Pista pistaPiramides = new Pista("Informacion de la Gran Esfinge");
-		this.agregarPista(pistaBandera);
-		this.agregarPista(pistaEscudo);
-		this.agregarPista(pistaPiramides);
+		this.acumularPista(pistaBandera);
+		this.acumularPista(pistaEscudo);
+		this.acumularPista(pistaPiramides);
 	}
 
 }

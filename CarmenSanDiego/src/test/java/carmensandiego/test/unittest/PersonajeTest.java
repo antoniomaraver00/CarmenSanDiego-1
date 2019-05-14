@@ -84,7 +84,7 @@ public class PersonajeTest {
 		Pista pista2 = new Pista("Pista 2");
 		
 		embajada.informarPista(pista1);
-		australia.agregarPista(pista2);
+		australia.acumularPista(pista2);
 		
 		australia.agregarEspacio(embajada);
 		australia.agregarEspacio(clubNocturno);

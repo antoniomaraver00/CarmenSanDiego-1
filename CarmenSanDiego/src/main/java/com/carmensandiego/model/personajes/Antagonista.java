@@ -104,14 +104,15 @@ public class Antagonista extends Personaje implements ViajeroInterface{
 	
 	/**
 	 * Sigue el recorrido elegido.
-	 * Genera las pistas del proximo destino para el protagonista.
+	 * Guarda las pistas del proximo destino para el protagonista en el pais actual.
 	 * Viaja al proximo destino.
 	 * Registra el destino donde ha viajado.
 	 * PRE: Listado de destinos no vacio
 	 * POST: Listado de registros no vacio
 	 */
 	public void seguirRecorrido() {
-		this.viajar(recorrido.obtenerProximoDestino());
+		this.paisActual.acumularPistas(this.tirarPistas());
+		this.viajar(this.recorrido.obtenerProximoDestino());
 		this.recorrido.registrarUltimoDestino();
 	}
 	

@@ -19,9 +19,9 @@ public class Argentina extends Pais {
 		Pista pistaBandera = new Pista("Bandera Celeste y Blanca");
 		Pista pistaEscudo = new Pista("Su escudo era un dorado y flameante corazon");
 		Pista pistaFutbol = new Pista("Informacion sobre equipos de futbol y canciones populares");
-		this.agregarPista(pistaBandera);
-		this.agregarPista(pistaEscudo);
-		this.agregarPista(pistaFutbol);
+		this.acumularPista(pistaBandera);
+		this.acumularPista(pistaEscudo);
+		this.acumularPista(pistaFutbol);
 	}
 
 }

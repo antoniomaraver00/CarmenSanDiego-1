@@ -17,9 +17,9 @@ public class Alemania extends Pais {
 		Pista pistaBandera = new Pista("Bandera Amarilla, Roja y Negra");
 		Pista pistaAuto = new Pista("Conducia un auto de alta gama");
 		Pista pistaSeguridad = new Pista("Inteligencia a determinado que buscaba un software de reconocimiento facial");
-		this.agregarPista(pistaBandera);
-		this.agregarPista(pistaAuto);
-		this.agregarPista(pistaSeguridad);
+		this.acumularPista(pistaBandera);
+		this.acumularPista(pistaAuto);
+		this.acumularPista(pistaSeguridad);
 	}
 
 }
