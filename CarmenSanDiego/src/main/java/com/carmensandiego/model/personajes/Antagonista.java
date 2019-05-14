@@ -101,8 +101,9 @@ public class Antagonista extends Personaje implements ViajeroInterface{
 	
 	/**
 	 * Sigue el recorrido elegido.
-	 * Viaja al proximo destino
-	 * Registra el destino donde ha viajado
+	 * Genera las pistas del proximo destino para el protagonista.
+	 * Viaja al proximo destino.
+	 * Registra el destino donde ha viajado.
 	 * PRE: Listado de destinos no vacio
 	 * POST: Listado de registros no vacio
 	 */

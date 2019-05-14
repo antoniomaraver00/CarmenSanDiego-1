@@ -81,4 +81,6 @@ public abstract class Pais implements Viajable{
 	public void ubicarViajeroInicialmente(ViajeroInterface viajero) {
 		viajero.visitar(this.espacios.get(0));
 	}
+	
+	protected abstract void crearPistas();
 }

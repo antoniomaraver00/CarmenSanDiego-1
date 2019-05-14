@@ -9,4 +9,10 @@ public class Canada extends Pais{
 		this.espacios.add(new Embajada());
 	}
 
+	@Override
+	protected void crearPistas() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
