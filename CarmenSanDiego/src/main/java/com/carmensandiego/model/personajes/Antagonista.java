@@ -2,6 +2,8 @@ package com.carmensandiego.model.personajes;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 import com.carmensandiego.model.espacio.Espacio;
 import com.carmensandiego.model.espacio.NingunEspacio;
@@ -69,7 +71,10 @@ public class Antagonista extends Personaje implements ViajeroInterface{
 	 * POST: crea el recorrido aleatoriamente.
 	 * 		 No cuenta el Pais Actual para el recorrido.
 	 */
-	public void elegirRecorrido(List<Pais> paises) {
+	public void elegirRecorrido(Map<String, Pais> mapaPaises) {
+		List<Pais> paises = mapaPaises.values()
+									  .stream()
+									  .collect(Collectors.toList());
 		//Creo un listado de numeros posibles
 		List<Integer> numerosPosibles = new ArrayList<Integer>();
 		int numerosTotales = 0;

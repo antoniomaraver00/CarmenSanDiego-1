@@ -19,11 +19,9 @@ public class Main extends Application{
 		
 		InitController initController = InitController.getSingletonInstance();
 		initController.crearMundo();
-		initController = null;
 		
 		Inicio inicio = new Inicio();
 		inicio.mostrarPantallaInicio(primaryStage);
-		inicio = null;
 	}
 	
 	/**

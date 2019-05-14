@@ -1,7 +1,7 @@
 package carmensandiego.test.unittest;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -125,12 +125,12 @@ public class PersonajeTest {
 	
 	@Test
 	public void antagonistaEligeRecorridoNoDebeIncluirPaisActual() {
-		List<Pais> paises = new ArrayList<Pais>();
-		paises.add(new Argentina());
-		paises.add(new Alemania());
-		paises.add(new Australia());
-		paises.add(new Canada());
-		paises.add(new Egipto());
+		Map<String,Pais> paises = new HashMap<String,Pais>();
+		paises.put("ARGENTINA",new Argentina());
+		paises.put("ALEMANIA",new Alemania());
+		paises.put("AUSTRALIA",new Australia());
+		paises.put("CANADA",new Canada());
+		paises.put("EGIPTO",new Egipto());
 		antagonista.elegirRecorrido(paises);
 		//Consultar y avanzar sobre los destinos
 		int count = 0;

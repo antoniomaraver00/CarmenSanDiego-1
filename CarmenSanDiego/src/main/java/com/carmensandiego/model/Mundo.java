@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 
 import com.carmensandiego.model.espacio.Espacio;
 import com.carmensandiego.model.pais.Pais;
+import com.carmensandiego.model.personajes.Antagonista;
 import com.carmensandiego.model.personajes.Protagonista;
 import com.carmensandiego.utils.PaisComparator;
 
@@ -22,10 +23,12 @@ public class Mundo {
 	
 	private Map<String,Pais> paises;
 	private Protagonista protagonista;
+	private Antagonista antagonista;
 	
 	private Mundo() {
 		this.paises = new HashMap<String,Pais>();
 		this.protagonista = new Protagonista();
+		this.antagonista = new Antagonista();
 	}
 	
 	public static  Mundo getSingletonInstance() {
@@ -49,6 +52,10 @@ public class Mundo {
 	public void crearProtagonista(String protagonista) {
 		this.protagonista.setNombre(protagonista);
 		this.protagonista.setDescripcion("El mejor detective de todos los tiempos");
+	}
+	
+	public void crearAntagonista() {
+		this.antagonista.elegirRecorrido(paises);
 	}
 	
 	/**

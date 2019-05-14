@@ -14,19 +14,19 @@ import com.carmensandiego.model.pais.Pais;
 /**
  * Esta clase es responsable de controllar el llamado de crear el mundo
  * Tiene la tarea de
- *     1) Crear los Espacios y Paises inciales para el mundo
- *     2) Crear a los personajes secundarios poniendolos en el nuevo mundo
- *     3) Tirar las pistas al azar por todo el mundo
+ *     1) Crear los Espacios y Paises inciales para el mundo.
+ *     2) Crear al Antagonista
+ *     3) Crear a los personajes secundarios poniendolos en el nuevo mundo.
  * @author martin
  *
  */
 public class InitController {
 	
 	private static InitController initController = null;
-	private Mundo mundo;
+	private Mundo mundo = null;
 	
 	private InitController() {
-		mundo = null;
+		this.mundo = Mundo.getSingletonInstance();
 	}
 	
 	public static  InitController getSingletonInstance() {
@@ -36,8 +36,8 @@ public class InitController {
 	}
 	
 	public Mundo crearMundo(){
-		this.mundo = Mundo.getSingletonInstance();
 		this.mundo.agregarPaises(this.crearEspaciosYPaises());
+		this.mundo.crearAntagonista();
 		return mundo;
 	}
 	
@@ -56,7 +56,4 @@ public class InitController {
 		return paises;
 	}
 	
-	private void crearYTirarPistas() {
-		//TODO: Pensar las pistas iniciales que estan en cada pais.
-	}
 }
