@@ -3,6 +3,7 @@ package com.carmensandiego.model.pista;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class PistasAcumuladas {
 	
@@ -31,10 +32,9 @@ public class PistasAcumuladas {
 	 * @return
 	 */
 	public List<Pista> tirarPistas(){
-		List<Pista> pistas = new ArrayList<Pista>();
-		for (Pista pista : this.pistas) {
-			pistas.add(pista);
-		}
+		List<Pista> pistas = this.pistas
+								 .stream()
+								 .collect(Collectors.toList());
 		this.pistas.clear();
 		return pistas;
 	}

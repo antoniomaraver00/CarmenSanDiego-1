@@ -49,7 +49,8 @@ public class Ubicacion {
 		}
 		
 		List<Text> pistas = new ArrayList<Text>();
-		for (Pista pista : mundo.getProtagonista().obtenerPistasAcumuladas()) {
+		for (Pista pista : mundo.getProtagonista().obtenerPistasNoVistas()) {
+			pista.verPista();
 			Text textPista = new Text(pista.getMensaje());
 			pistas.add(textPista);
 		}

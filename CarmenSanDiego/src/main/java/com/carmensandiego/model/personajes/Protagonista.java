@@ -1,6 +1,7 @@
 package com.carmensandiego.model.personajes;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import com.carmensandiego.model.espacio.Espacio;
 import com.carmensandiego.model.espacio.NingunEspacio;
@@ -41,6 +42,13 @@ public class Protagonista extends Personaje implements ViajeroInterface{
 	
 	public List<Pista> obtenerPistasAcumuladas() {
 		return this.pistasAcumuladas.getPistas();
+	}
+	
+	public List<Pista> obtenerPistasNoVistas(){
+		return this.pistasAcumuladas.getPistas()
+				.stream()
+				.filter(p -> !p.getVisto())
+				.collect(Collectors.toList());
 	}
 
 	@Override
