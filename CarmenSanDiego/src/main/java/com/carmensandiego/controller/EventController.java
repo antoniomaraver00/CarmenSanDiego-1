@@ -3,6 +3,7 @@ package com.carmensandiego.controller;
 import com.carmensandiego.model.Mundo;
 import com.carmensandiego.model.espacio.Espacio;
 import com.carmensandiego.model.interfaz.ViajeroInterface;
+import com.carmensandiego.model.pais.ClavePais;
 import com.carmensandiego.model.pais.Pais;
 import com.carmensandiego.model.parametria.ParametriaTime;
 import com.carmensandiego.view.Bienvenido;
@@ -69,9 +70,9 @@ public class EventController {
 			@Override 
 			public void handle(MouseEvent e) {
 				ViajeroInterface viajero = mundo.getProtagonista();
-				viajero.viajar(mundo.getPais("ARGENTINA"));
+				viajero.viajar(mundo.getPais(ClavePais.ARGENTINA.getKey()));
 				//TODO: Otra manera de setearlo en la casa.
-				viajero.visitar(mundo.getPais("ARGENTINA").getEspacios().get(1));
+				viajero.visitar(mundo.getPais(ClavePais.ARGENTINA.getKey()).getEspacios().get(1));
 				Ubicacion ubicacion = new Ubicacion();
 				ubicacion.mostrarPantallaUbicacion(primaryStage);
 				ubicacion = null;
@@ -85,8 +86,8 @@ public class EventController {
 		EventHandler<MouseEvent> botonVisitarEventHandler = new EventHandler<MouseEvent>() { 
 			@Override 
 			public void handle(MouseEvent e) {
-				ViajeroInterface viajero = mundo.getProtagonista();
-				viajero.visitar(espacio);
+				ViajeroInterface protagonista = mundo.getProtagonista();
+				protagonista.visitar(espacio);
 				stateController.avanzarTiempo(ParametriaTime.VISIT_TIME.getValue());
 				if(stateController.finDeJuego()){
 					Fin fin = new Fin();
@@ -107,8 +108,9 @@ public class EventController {
 		EventHandler<MouseEvent> botonViajarEventHandler = new EventHandler<MouseEvent>() {
 			@Override 
 			public void handle(MouseEvent e) {
-				ViajeroInterface viajero = mundo.getProtagonista();
-				viajero.viajar(pais);
+				stateController.moverAntagonista(pais);
+				ViajeroInterface protagonista = mundo.getProtagonista();
+				protagonista.viajar(pais);
 				stateController.avanzarTiempo(ParametriaTime.TRAVEL_TIME.getValue());
 				if(stateController.finDeJuego()){
 					Fin fin = new Fin();

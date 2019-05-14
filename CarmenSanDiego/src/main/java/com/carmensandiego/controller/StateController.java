@@ -2,6 +2,8 @@ package com.carmensandiego.controller;
 
 import com.carmensandiego.model.Mundo;
 import com.carmensandiego.model.Timer;
+import com.carmensandiego.model.interfaz.Viajable;
+import com.carmensandiego.model.personajes.Antagonista;
 
 /**
  * Esta clase se encarga de chequear los estados del juego.
@@ -16,10 +18,12 @@ public class StateController {
 	private static StateController stateController = null;
 	private Mundo mundo = null;
 	private Timer timer = null;
+	private Antagonista antagonista = null;
 	
 	private StateController() {
 		this.mundo = Mundo.getSingletonInstance();
 		this.timer = Timer.getSingletonInstance();
+		this.antagonista = mundo.getAntagonista();
 	}
 	
 	public static StateController getSingletonInstance() {
@@ -30,6 +34,15 @@ public class StateController {
 	
 	public Mundo getMundo() {
 		return mundo;
+	}
+	
+	/**
+	 * El antagonista se mueve para no ser atrapado por el protagonista
+	 * Dada su audacia, sabe cual sera el destino del protagonista.
+	 * @param destinoProtagonista
+	 */
+	public void moverAntagonista(Viajable destinoProtagonista) {
+		this.antagonista.seguirRecorrido(destinoProtagonista);
 	}
 	
 	/**
@@ -49,7 +62,7 @@ public class StateController {
 		return this.timer.tiempoAgotado();
 	}
 	
-	public String getTiempoRestante(){
+	public String obtenerTiempoRestante(){
 		return this.timer.getTiempoRestante();
 	}
 

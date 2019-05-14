@@ -50,10 +50,10 @@ public class InitController {
 		paises.put(ClavePais.ARGENTINA.getKey(), argentina);
 		Pais australia = new Australia();
 		paises.put(ClavePais.AUSTRALIA.getKey(), australia);
-		Pais egipto = new Egipto();
-		paises.put(ClavePais.CANADA.getKey(), egipto);
 		Pais canada = new Canada();
-		paises.put(ClavePais.EGIPTO.getKey(), canada);
+		paises.put(ClavePais.CANADA.getKey(), canada);
+		Pais egipto = new Egipto();
+		paises.put(ClavePais.EGIPTO.getKey(), egipto);
 		return paises;
 	}
 	

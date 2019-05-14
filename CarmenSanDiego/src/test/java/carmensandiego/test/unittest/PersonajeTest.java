@@ -18,6 +18,7 @@ import com.carmensandiego.model.pais.Australia;
 import com.carmensandiego.model.pais.Canada;
 import com.carmensandiego.model.pais.ClavePais;
 import com.carmensandiego.model.pais.Egipto;
+import com.carmensandiego.model.pais.NingunPais;
 import com.carmensandiego.model.pais.Pais;
 import com.carmensandiego.model.personajes.Antagonista;
 import com.carmensandiego.model.personajes.PersonajeSecundario;
@@ -138,7 +139,7 @@ public class PersonajeTest {
 		int count = 0;
 		while(count < paisesDestino) {
 			Assert.assertFalse(antagonista.getPaisActual().getNombre().equals(antagonista.obtenerProximoDestino().getNombre()));
-			antagonista.seguirRecorrido();
+			antagonista.seguirRecorrido(new NingunPais());
 			count++;
 		}
 	}

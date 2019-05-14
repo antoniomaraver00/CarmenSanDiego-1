@@ -51,6 +51,13 @@ public class Protagonista extends Personaje implements ViajeroInterface{
 				.collect(Collectors.toList());
 	}
 
+	/**
+	 * El protagonista viaja a un viajable para buscar pistas.
+	 * Recibe las pistas y actualiza su posicion.
+	 * PRE: Recibe un destino
+	 * POST: El protagonista tiene pistas acumuladas
+	 * 		 Actualizo su Pais y su Espacio Actual.
+	 */
 	@Override
 	public void viajar(Viajable destino) {
 		this.pistasAcumuladas.acumularPistas(destino.protagonistaHaLlegado());

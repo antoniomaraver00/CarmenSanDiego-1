@@ -50,6 +50,10 @@ public class Antagonista extends Personaje implements ViajeroInterface{
 		return this.pistasAcumuladas.tirarPistas();
 	}
 
+	/**
+	 * El Antagonista viaja a un destino.
+	 * Deja caer Pistas que pueden ayudar al Protagonista. 
+	 */
 	@Override
 	public void viajar(Viajable destino) {
 		destino.antagonistaHaLlegado(pistasAcumuladas.tirarPistas());
@@ -103,16 +107,22 @@ public class Antagonista extends Personaje implements ViajeroInterface{
 	}
 	
 	/**
-	 * Sigue el recorrido elegido.
+	 * El Antagonista sigue el recorrido elegido.
+	 * Debido a su audacia, sabe a que destino viajara el protagonista.
+	 * Este destino puede ser o no donde se encuentra el Antagonista.
 	 * Guarda las pistas del proximo destino para el protagonista en el pais actual.
 	 * Viaja al proximo destino.
 	 * Registra el destino donde ha viajado.
-	 * PRE: Listado de destinos no vacio
-	 * POST: Listado de registros no vacio
+	 * PRE: Recibe el destino donde ira el Protagonista.
+	 * 	    El listado de destinos en el recorrido no debe estar vacio
+	 * POST: El pais que dejo el Antagonista tiene pistas que el protagonista podra acumular. 
+	 *       Listado de registros no vacio.
 	 */
-	public void seguirRecorrido() {
+	public void seguirRecorrido(Viajable destinoProtagonista) {
+		Pais proximoDestino = this.recorrido.obtenerProximoDestino();
+		this.pistasAcumuladas.acumularPistas(proximoDestino.getPistasAcumuladas().tirarPistas());
 		this.paisActual.acumularPistas(this.tirarPistas());
-		this.viajar(this.recorrido.obtenerProximoDestino());
+		this.viajar(proximoDestino);
 		this.recorrido.registrarUltimoDestino();
 	}
 	

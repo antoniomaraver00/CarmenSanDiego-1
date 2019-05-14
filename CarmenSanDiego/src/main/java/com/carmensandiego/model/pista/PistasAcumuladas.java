@@ -17,10 +17,18 @@ public class PistasAcumuladas {
 		return this.pistas;
 	}
 	
+	/**
+	 * Acumula una pista
+	 * @param pista
+	 */
 	public void acumularPista(Pista pista) {
 		this.pistas.add(pista);
 	}
 	
+	/**
+	 * Acumula una coleccion de pistas
+	 * @param pistas
+	 */
 	public void acumularPistas(Collection<Pista> pistas) {
 		if(pistas != null) this.pistas.addAll(pistas);
 	}

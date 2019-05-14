@@ -38,8 +38,16 @@ public class Mundo {
 		return mundo;
 	}
 	
+	public Map<String, Pais> getPaises() {
+		return paises;
+	}
+
 	public Protagonista getProtagonista() {
 		return this.protagonista;
+	}
+	
+	public Antagonista getAntagonista() {
+		return antagonista;
 	}
 	
 	public Pais getPais(String id) {

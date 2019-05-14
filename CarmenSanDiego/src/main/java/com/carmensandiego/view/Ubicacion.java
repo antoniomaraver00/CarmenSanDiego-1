@@ -36,7 +36,7 @@ public class Ubicacion {
 		Text space = new Text("Lugar Actual: "+ mundo.getProtagonista().getEspacioActual().getNombre());
 		Text message = new Text("Descripcion: "+ mundo.getProtagonista().getEspacioActual().getDescripcion());
 		
-		Text time = new Text("Tiempo Restante: "+stateController.getTiempoRestante());
+		Text time = new Text("Tiempo Restante: "+stateController.obtenerTiempoRestante());
 		
 		List<BotonEspacio> espacios = new ArrayList<BotonEspacio>();
 		for(Espacio espacio : mundo.obtenerEspaciosDisponiblesParaProtagonista()) {
@@ -91,7 +91,7 @@ public class Ubicacion {
 		i = 7;
 		j = 0;
 		for (Text text : pistas) {
-			gridPane.add(text, i, j);
+			gridPane.add(text, j, i);
 			text.setStyle("-fx-font: normal bold 20px 'serif' ");
 			i++;
 		}
