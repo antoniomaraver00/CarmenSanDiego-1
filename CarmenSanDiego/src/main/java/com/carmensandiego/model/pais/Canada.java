@@ -7,6 +7,7 @@ public class Canada extends Pais{
 	public Canada() {
 		super("Canada","Canada es una democracia parlamentaria que forma parte de la Commonwealth. Su capital, Ottawa, esta situada en la provincia de Ontario.");
 		this.espacios.add(new Embajada());
+		this.crearPistas();
 	}
 
 	@Override

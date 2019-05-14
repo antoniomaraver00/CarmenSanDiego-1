@@ -12,6 +12,10 @@ public class PistasAcumuladas {
 		this.pistas = new ArrayList<Pista>();
 	}
 	
+	public List<Pista> getPistas() {
+		return this.pistas;
+	}
+	
 	public void acumularPista(Pista pista) {
 		this.pistas.add(pista);
 	}
@@ -20,10 +24,12 @@ public class PistasAcumuladas {
 		if(pistas != null) this.pistas.addAll(pistas);
 	}
 
-	public List<Pista> getPistas() {
-		return this.pistas;
-	}
-	
+	/**
+	 * Tira las pistas acumuladas.
+	 * PRE: Ninguno
+	 * POST: Limpia el listado de pistas acumuladas. No hay mas pistas.
+	 * @return
+	 */
 	public List<Pista> tirarPistas(){
 		List<Pista> pistas = new ArrayList<Pista>();
 		for (Pista pista : this.pistas) {

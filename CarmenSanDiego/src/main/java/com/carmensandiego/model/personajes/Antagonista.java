@@ -39,6 +39,14 @@ public class Antagonista extends Personaje implements ViajeroInterface{
 	public Espacio getEspacioActual() {
 		return espacioActual;
 	}
+	
+	public void acumularPista(Pista pista) {
+		this.pistasAcumuladas.acumularPista(pista);
+	}
+	
+	public List<Pista> tirarPistas(){
+		return this.pistasAcumuladas.tirarPistas();
+	}
 
 	@Override
 	public void viajar(Viajable destino) {
@@ -51,16 +59,6 @@ public class Antagonista extends Personaje implements ViajeroInterface{
 	public void visitar(Visitable destino) {
 		destino.serVisitadoPorAntagonista(pistasAcumuladas.tirarPistas());
 		this.espacioActual = destino.serVisitado();
-	}
-	
-	@Deprecated
-	public void setPista(Pista pista) {
-		this.pistasAcumuladas.acumularPista(pista);
-	}
-	
-	@Deprecated
-	public List<Pista> obtenerPistas(){
-		return this.pistasAcumuladas.getPistas();
 	}
 	
 	/**

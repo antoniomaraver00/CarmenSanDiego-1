@@ -82,5 +82,8 @@ public abstract class Pais implements Viajable{
 		viajero.visitar(this.espacios.get(0));
 	}
 	
+	/**
+	 * Agregar las pistas de cada pais
+	 */
 	protected abstract void crearPistas();
 }

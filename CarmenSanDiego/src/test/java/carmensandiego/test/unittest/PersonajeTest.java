@@ -72,6 +72,8 @@ public class PersonajeTest {
 	@Test
 	public void elPersonajePrincipalDebePoderRecolectarPistasDePaisesYLugares() {
 		
+		Integer cantidadPistasIniciales = this.protagonista.obtenerPistasAcumuladas().size();
+		
 		Australia australia = new Australia();
 		ClubNocturno clubNocturno = new ClubNocturno();
 		Embajada embajada = new Embajada();
@@ -89,10 +91,9 @@ public class PersonajeTest {
 		this.protagonista.visitar(clubNocturno);
 		this.protagonista.visitar(embajada);
 		
-		Integer cantidadPistasAcumuladas = this.protagonista.obtenerPistas().size();
+		Integer cantidadPistasAcumuladas = this.protagonista.obtenerPistasAcumuladas().size();
 		
-		Assert.assertTrue(cantidadPistasAcumuladas.equals(2));
-		
+		Assert.assertTrue(cantidadPistasAcumuladas > cantidadPistasIniciales);
 	}
 	
 	@Test
@@ -105,19 +106,19 @@ public class PersonajeTest {
 		
 		australia.agregarEspacio(clubNocturno);
 		
-		antagonista.setPista(pista1);
+		antagonista.acumularPista(pista1);
 		
 		antagonista.viajar(australia);
 		
-		Integer cantidadPistasAcumuladas = this.antagonista.obtenerPistas().size();
+		Integer cantidadPistasAcumuladas = this.antagonista.tirarPistas().size();
 		
 		Assert.assertTrue(cantidadPistasAcumuladas.equals(0));
 		
-		antagonista.setPista(pista2);
+		antagonista.acumularPista(pista2);
 		
 		antagonista.visitar(clubNocturno);
 		
-		cantidadPistasAcumuladas = this.antagonista.obtenerPistas().size();
+		cantidadPistasAcumuladas = this.antagonista.tirarPistas().size();
 		
 		Assert.assertTrue(cantidadPistasAcumuladas.equals(0));				
 	}

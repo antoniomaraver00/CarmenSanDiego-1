@@ -11,6 +11,7 @@ public class Argentina extends Pais {
 				+ " mas bellas del mundo. Vivís acá.");
 		this.espacios.add(new Home());
 		this.espacios.add(new ClubNocturno());
+		this.crearPistas();
 	}
 
 	@Override
@@ -18,6 +19,9 @@ public class Argentina extends Pais {
 		Pista pistaBandera = new Pista("Bandera Celeste y Blanca");
 		Pista pistaEscudo = new Pista("Su escudo era un dorado y flameante corazon");
 		Pista pistaFutbol = new Pista("Informacion sobre equipos de futbol y canciones populares");
+		this.agregarPista(pistaBandera);
+		this.agregarPista(pistaEscudo);
+		this.agregarPista(pistaFutbol);
 	}
 
 }

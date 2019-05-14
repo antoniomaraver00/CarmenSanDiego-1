@@ -38,6 +38,10 @@ public class Protagonista extends Personaje implements ViajeroInterface{
 	public Espacio getEspacioActual() {
 		return espacioActual;
 	}
+	
+	public List<Pista> obtenerPistasAcumuladas() {
+		return this.pistasAcumuladas.getPistas();
+	}
 
 	@Override
 	public void viajar(Viajable destino) {
@@ -52,9 +56,4 @@ public class Protagonista extends Personaje implements ViajeroInterface{
 		this.espacioActual = destino.serVisitado();
 	}
 	
-	@Deprecated
-	public List<Pista> obtenerPistas() {
-		return this.pistasAcumuladas.getPistas();
-	}
-
 }
