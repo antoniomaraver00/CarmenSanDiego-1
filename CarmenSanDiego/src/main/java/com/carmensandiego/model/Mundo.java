@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import com.carmensandiego.model.espacio.Espacio;
+import com.carmensandiego.model.pais.ClavePais;
 import com.carmensandiego.model.pais.Pais;
 import com.carmensandiego.model.personajes.Antagonista;
 import com.carmensandiego.model.personajes.Protagonista;
@@ -55,6 +56,7 @@ public class Mundo {
 	}
 	
 	public void crearAntagonista() {
+		this.antagonista.viajar(this.getPais(ClavePais.CANADA.getKey()));
 		this.antagonista.elegirRecorrido(paises);
 	}
 	

@@ -16,6 +16,7 @@ import com.carmensandiego.model.pais.Alemania;
 import com.carmensandiego.model.pais.Argentina;
 import com.carmensandiego.model.pais.Australia;
 import com.carmensandiego.model.pais.Canada;
+import com.carmensandiego.model.pais.ClavePais;
 import com.carmensandiego.model.pais.Egipto;
 import com.carmensandiego.model.pais.Pais;
 import com.carmensandiego.model.personajes.Antagonista;
@@ -126,11 +127,11 @@ public class PersonajeTest {
 	@Test
 	public void antagonistaEligeRecorridoNoDebeIncluirPaisActual() {
 		Map<String,Pais> paises = new HashMap<String,Pais>();
-		paises.put("ARGENTINA",new Argentina());
-		paises.put("ALEMANIA",new Alemania());
-		paises.put("AUSTRALIA",new Australia());
-		paises.put("CANADA",new Canada());
-		paises.put("EGIPTO",new Egipto());
+		paises.put(ClavePais.ALEMANIA.getKey(),new Argentina());
+		paises.put(ClavePais.ARGENTINA.getKey(),new Alemania());
+		paises.put(ClavePais.AUSTRALIA.getKey(),new Australia());
+		paises.put(ClavePais.CANADA.getKey(),new Canada());
+		paises.put(ClavePais.EGIPTO.getKey(),new Egipto());
 		antagonista.elegirRecorrido(paises);
 		//Consultar y avanzar sobre los destinos
 		int count = 0;

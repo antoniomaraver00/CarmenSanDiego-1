@@ -8,6 +8,7 @@ import com.carmensandiego.model.pais.Alemania;
 import com.carmensandiego.model.pais.Argentina;
 import com.carmensandiego.model.pais.Australia;
 import com.carmensandiego.model.pais.Canada;
+import com.carmensandiego.model.pais.ClavePais;
 import com.carmensandiego.model.pais.Egipto;
 import com.carmensandiego.model.pais.Pais;
 
@@ -44,15 +45,15 @@ public class InitController {
 	private Map<String,Pais> crearEspaciosYPaises() {
 		Map<String,Pais> paises = new HashMap<String,Pais>();
 		Pais alemania = new Alemania();
-		paises.put("ALEMANIA", alemania);
+		paises.put(ClavePais.ALEMANIA.getKey(), alemania);
 		Pais argentina = new Argentina();
-		paises.put("ARGENTINA", argentina);
+		paises.put(ClavePais.ARGENTINA.getKey(), argentina);
 		Pais australia = new Australia();
-		paises.put("AUSTRALIA", australia);
+		paises.put(ClavePais.AUSTRALIA.getKey(), australia);
 		Pais egipto = new Egipto();
-		paises.put("EGIPTO", egipto);
+		paises.put(ClavePais.CANADA.getKey(), egipto);
 		Pais canada = new Canada();
-		paises.put("CANADA", canada);
+		paises.put(ClavePais.EGIPTO.getKey(), canada);
 		return paises;
 	}
 	
