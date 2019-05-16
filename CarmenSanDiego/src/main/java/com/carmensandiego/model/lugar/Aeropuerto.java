@@ -1,8 +1,8 @@
-package com.carmensandiego.model.espacio;
+package com.carmensandiego.model.lugar;
 
 import com.carmensandiego.model.personajes.PersonajeSecundario;
 
-public class Aeropuerto extends Espacio {
+public class Aeropuerto extends Lugar {
 	
 	public Aeropuerto(String nombrePais) {
 		super();

@@ -1,8 +1,8 @@
 package com.carmensandiego.controller;
 
 import com.carmensandiego.model.Mundo;
-import com.carmensandiego.model.espacio.Espacio;
-import com.carmensandiego.model.interfaz.ViajeroInterface;
+import com.carmensandiego.model.interfaz.Viajero;
+import com.carmensandiego.model.lugar.Lugar;
 import com.carmensandiego.model.pais.ClavePais;
 import com.carmensandiego.model.pais.Pais;
 import com.carmensandiego.model.parametria.ParametriaTime;
@@ -69,10 +69,10 @@ public class EventController {
 		EventHandler<MouseEvent> botonEmpezarEventHandler = new EventHandler<MouseEvent>() { 
 			@Override 
 			public void handle(MouseEvent e) {
-				ViajeroInterface viajero = mundo.getProtagonista();
+				Viajero viajero = mundo.getProtagonista();
 				viajero.viajar(mundo.getPais(ClavePais.ARGENTINA.getKey()));
 				//TODO: Otra manera de setearlo en la casa.
-				viajero.visitar(mundo.getPais(ClavePais.ARGENTINA.getKey()).getEspacios().get(1));
+				viajero.visitar(mundo.getPais(ClavePais.ARGENTINA.getKey()).getLugares().get(0));
 				Ubicacion ubicacion = new Ubicacion();
 				ubicacion.mostrarPantallaUbicacion(primaryStage);
 				ubicacion = null;
@@ -82,11 +82,11 @@ public class EventController {
 	}
 
 	//Creating the mouse event
-	public EventHandler<MouseEvent> protagonistaVisita(Espacio espacio, Stage primaryStage) {
+	public EventHandler<MouseEvent> protagonistaVisita(Lugar espacio, Stage primaryStage) {
 		EventHandler<MouseEvent> botonVisitarEventHandler = new EventHandler<MouseEvent>() { 
 			@Override 
 			public void handle(MouseEvent e) {
-				ViajeroInterface protagonista = mundo.getProtagonista();
+				Viajero protagonista = mundo.getProtagonista();
 				protagonista.visitar(espacio);
 				stateController.avanzarTiempo(ParametriaTime.VISIT_TIME.getValue());
 				if(stateController.finDeJuego()){
@@ -109,7 +109,7 @@ public class EventController {
 			@Override 
 			public void handle(MouseEvent e) {
 				stateController.moverAntagonista(pais);
-				ViajeroInterface protagonista = mundo.getProtagonista();
+				Viajero protagonista = mundo.getProtagonista();
 				protagonista.viajar(pais);
 				stateController.avanzarTiempo(ParametriaTime.TRAVEL_TIME.getValue());
 				if(stateController.finDeJuego()){

@@ -5,22 +5,20 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import com.carmensandiego.model.espacio.Espacio;
-import com.carmensandiego.model.espacio.NingunEspacio;
-import com.carmensandiego.model.interfaz.Viajable;
-import com.carmensandiego.model.interfaz.ViajeroInterface;
-import com.carmensandiego.model.interfaz.Visitable;
+import com.carmensandiego.model.interfaz.Viajero;
+import com.carmensandiego.model.lugar.Lugar;
+import com.carmensandiego.model.lugar.NingunEspacio;
 import com.carmensandiego.model.pais.NingunPais;
 import com.carmensandiego.model.pais.Pais;
 import com.carmensandiego.model.pista.Pista;
 import com.carmensandiego.model.pista.PistasAcumuladas;
 import com.carmensandiego.model.recorrido.Recorrido;
 
-public class Antagonista extends Personaje implements ViajeroInterface{
+public class Antagonista extends Personaje implements Viajero{
 	
 	private Pais paisActual;
 	
-	private Espacio espacioActual;
+	private Lugar espacioActual;
 	
 	private PistasAcumuladas pistasAcumuladas;
 	
@@ -38,7 +36,7 @@ public class Antagonista extends Personaje implements ViajeroInterface{
 		return paisActual;
 	}
 
-	public Espacio getEspacioActual() {
+	public Lugar getEspacioActual() {
 		return espacioActual;
 	}
 	
@@ -51,20 +49,23 @@ public class Antagonista extends Personaje implements ViajeroInterface{
 	}
 
 	/**
-	 * El Antagonista viaja a un destino.
+	 * El Antagonista parte del Pais Actual y viaja a un Destino
 	 * Deja caer Pistas que pueden ayudar al Protagonista. 
 	 */
 	@Override
-	public void viajar(Viajable destino) {
-		destino.antagonistaHaLlegado(pistasAcumuladas.tirarPistas());
-		paisActual = destino.viajeroHaLlegado();
+	public void viajar(Pais destino) {
+		paisActual.antagonistaHaPartido(destino.darPistas());
+		paisActual = destino;
 		destino.ubicarViajeroInicialmente(this);
 	}
 
+	/**
+	 * El Antagonista visita un lugar pero no deja pistas.
+	 * Es mas agil y sigiloso en ciudades.
+	 */
 	@Override
-	public void visitar(Visitable destino) {
-		destino.serVisitadoPorAntagonista(pistasAcumuladas.tirarPistas());
-		this.espacioActual = destino.serVisitado();
+	public void visitar(Lugar destino) {
+		this.espacioActual = destino;
 	}
 	
 	/**
@@ -110,19 +111,14 @@ public class Antagonista extends Personaje implements ViajeroInterface{
 	 * El Antagonista sigue el recorrido elegido.
 	 * Debido a su audacia, sabe a que destino viajara el protagonista.
 	 * Este destino puede ser o no donde se encuentra el Antagonista.
-	 * Guarda las pistas del proximo destino para el protagonista en el pais actual.
 	 * Viaja al proximo destino.
 	 * Registra el destino donde ha viajado.
-	 * PRE: Recibe el destino donde ira el Protagonista.
-	 * 	    El listado de destinos en el recorrido no debe estar vacio
-	 * POST: El pais que dejo el Antagonista tiene pistas que el protagonista podra acumular. 
-	 *       Listado de registros no vacio.
+	 * PRE:  Recibe el destino donde ira el Protagonista.
+	 * 	     El listado de destinos en el recorrido no debe estar vacio
+	 * POST: Listado de registros no vacio.
 	 */
-	public void seguirRecorrido(Viajable destinoProtagonista) {
-		Pais proximoDestino = this.recorrido.obtenerProximoDestino();
-		pistasAcumuladas.acumularPistas(proximoDestino.crearPistas());
-		this.paisActual.acumularPistas(this.tirarPistas());
-		this.viajar(proximoDestino);
+	public void seguirRecorrido(Pais destinoProtagonista) {
+		this.viajar(this.recorrido.obtenerProximoDestino());
 		this.recorrido.registrarUltimoDestino();
 	}
 	

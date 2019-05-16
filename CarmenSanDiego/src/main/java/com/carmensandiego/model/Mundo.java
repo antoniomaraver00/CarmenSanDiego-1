@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import com.carmensandiego.model.espacio.Espacio;
+import com.carmensandiego.model.lugar.Lugar;
 import com.carmensandiego.model.pais.ClavePais;
 import com.carmensandiego.model.pais.Pais;
 import com.carmensandiego.model.personajes.Antagonista;
@@ -74,11 +74,11 @@ public class Mundo {
 	 * No esta el Espacio Actual.
 	 * @return
 	 */
-	public List<Espacio> obtenerEspaciosDisponiblesParaProtagonista(){
-		List<Espacio> espacios = new ArrayList<Espacio>();
+	public List<Lugar> obtenerEspaciosDisponiblesParaProtagonista(){
+		List<Lugar> espacios = new ArrayList<Lugar>();
 		Pais paisDelProtagonista = this.protagonista.getPaisActual();
 		if(paisDelProtagonista != null)
-			espacios.addAll(paisDelProtagonista.getEspacios()
+			espacios.addAll(paisDelProtagonista.getLugares()
 											   .stream()
 											   .filter(e -> e.getNombre() != this.protagonista.getEspacioActual().getNombre())
 											   .collect(Collectors.toList()));

@@ -1,6 +1,6 @@
-package com.carmensandiego.model.espacio;
+package com.carmensandiego.model.lugar;
 
-public class Home extends Espacio {
+public class Home extends Lugar {
 	
 	public Home() {
 		super();

@@ -2,7 +2,7 @@ package com.carmensandiego.controller;
 
 import com.carmensandiego.model.Mundo;
 import com.carmensandiego.model.Timer;
-import com.carmensandiego.model.interfaz.Viajable;
+import com.carmensandiego.model.pais.Pais;
 import com.carmensandiego.model.personajes.Antagonista;
 
 /**
@@ -10,7 +10,7 @@ import com.carmensandiego.model.personajes.Antagonista;
  * Actualiza cada vez que hay un cambio y chequea las condiciones para eventos importantes.
  * Muestra a las vistas el estado actual del mundo y del juego
  * Por ejemplo: Finalizar el juego.
- * @author martin
+ * @author mperez
  *
  */
 public class StateController {
@@ -41,7 +41,7 @@ public class StateController {
 	 * Dada su audacia, sabe cual sera el destino del protagonista.
 	 * @param destinoProtagonista
 	 */
-	public void moverAntagonista(Viajable destinoProtagonista) {
+	public void moverAntagonista(Pais destinoProtagonista) {
 		this.antagonista.seguirRecorrido(destinoProtagonista);
 	}
 	

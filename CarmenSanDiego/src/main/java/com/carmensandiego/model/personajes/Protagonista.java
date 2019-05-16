@@ -3,23 +3,21 @@ package com.carmensandiego.model.personajes;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.carmensandiego.model.espacio.Espacio;
-import com.carmensandiego.model.espacio.NingunEspacio;
-import com.carmensandiego.model.interfaz.Viajable;
-import com.carmensandiego.model.interfaz.ViajeroInterface;
-import com.carmensandiego.model.interfaz.Visitable;
+import com.carmensandiego.model.interfaz.Viajero;
+import com.carmensandiego.model.lugar.Lugar;
+import com.carmensandiego.model.lugar.NingunEspacio;
 import com.carmensandiego.model.pais.NingunPais;
 import com.carmensandiego.model.pais.Pais;
 import com.carmensandiego.model.pista.Pista;
 import com.carmensandiego.model.pista.PistasAcumuladas;
 
-public class Protagonista extends Personaje implements ViajeroInterface{
+public class Protagonista extends Personaje implements Viajero{
 	
 	private PistasAcumuladas pistasAcumuladas;
 	
 	private Pais paisActual;
 	
-	private Espacio espacioActual;
+	private Lugar espacioActual;
 	
 	public Protagonista() {
 		super();
@@ -36,7 +34,7 @@ public class Protagonista extends Personaje implements ViajeroInterface{
 		return paisActual;
 	}
 
-	public Espacio getEspacioActual() {
+	public Lugar getEspacioActual() {
 		return espacioActual;
 	}
 	
@@ -53,20 +51,18 @@ public class Protagonista extends Personaje implements ViajeroInterface{
 
 	/**
 	 * El protagonista viaja a un viajable para buscar pistas.
-	 * Recibe las pistas y actualiza su posicion.
-	 * PRE: Recibe un destino
-	 * POST: El protagonista tiene pistas acumuladas
-	 * 		 Actualizo su Pais y su Espacio Actual.
+	 * Actualiza su posicion.
+	 * PRE:  Recibe un destino
+	 * POST: Actualizo su Pais y su Espacio Actual.
 	 */
 	@Override
-	public void viajar(Viajable destino) {
-		this.pistasAcumuladas.acumularPistas(destino.protagonistaHaLlegado());
-		this.paisActual = destino.viajeroHaLlegado();
+	public void viajar(Pais destino) {
+		this.paisActual = destino;
 		destino.ubicarViajeroInicialmente(this);
 	}
 
 	@Override
-	public void visitar(Visitable destino) {
+	public void visitar(Lugar destino) {
 		this.pistasAcumuladas.acumularPistas(destino.serVisitadoPorProtagonista());
 		this.espacioActual = destino.serVisitado();
 	}

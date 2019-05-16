@@ -12,7 +12,7 @@ public class NingunPais extends Pais {
 	}
 
 	@Override
-	public List<Pista> crearPistas() {
+	public List<Pista> crearMisPistas() {
 		//Devuelve una lista vacia.
 		return new ArrayList<Pista>();
 	}

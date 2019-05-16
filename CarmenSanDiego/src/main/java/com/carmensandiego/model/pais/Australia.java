@@ -3,20 +3,20 @@ package com.carmensandiego.model.pais;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.carmensandiego.model.espacio.Museo;
-import com.carmensandiego.model.espacio.PlazaMunicipal;
+import com.carmensandiego.model.lugar.Museo;
+import com.carmensandiego.model.lugar.PlazaMunicipal;
 import com.carmensandiego.model.pista.Pista;
 
 public class Australia extends Pais {
 	
 	public Australia() {
 		super("Australia","Territorio de los canguros, gran diversidad de habitats.");
-		this.espacios.add(new Museo());
-		this.espacios.add(new PlazaMunicipal());
+		lugares.agregarLugar(new Museo());
+		lugares.agregarLugar(new PlazaMunicipal());
 	}
 
 	@Override
-	public List<Pista> crearPistas() {
+	public List<Pista> crearMisPistas() {
 		List<Pista> pistasDelPais = new ArrayList<Pista>();
 		Pista pistaBandera = new Pista("Bandera Azul, Roja y Blanca");
 		pistasDelPais.add(pistaBandera);

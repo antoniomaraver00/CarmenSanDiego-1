@@ -1,8 +1,8 @@
-package com.carmensandiego.model.espacio;
+package com.carmensandiego.model.lugar;
 
 import com.carmensandiego.model.personajes.PersonajeSecundario;
 
-public class ClubNocturno extends Espacio{
+public class ClubNocturno extends Lugar{
 
 	public ClubNocturno() {
 		super();

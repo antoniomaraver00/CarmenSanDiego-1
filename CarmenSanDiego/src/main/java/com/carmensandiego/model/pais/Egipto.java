@@ -3,18 +3,18 @@ package com.carmensandiego.model.pais;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.carmensandiego.model.espacio.Piramide;
+import com.carmensandiego.model.lugar.Piramide;
 import com.carmensandiego.model.pista.Pista;
 
 public class Egipto extends Pais {
 	
 	public Egipto() {
 		super("Egipto","Pais de increibles historias, monumentos exoticos y tesoros antiguos.");
-		this.espacios.add(new Piramide());
+		lugares.agregarLugar(new Piramide());
 	}
 
 	@Override
-	public List<Pista> crearPistas() {
+	public List<Pista> crearMisPistas() {
 		List<Pista> pistasDelPais = new ArrayList<Pista>();
 		Pista pistaBandera = new Pista("Bandera Roja, Negra y Blanca");
 		pistasDelPais.add(pistaBandera);

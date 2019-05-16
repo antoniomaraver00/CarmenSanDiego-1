@@ -3,7 +3,7 @@ package com.carmensandiego.model.pais;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.carmensandiego.model.espacio.Automotores;
+import com.carmensandiego.model.lugar.Automotores;
 import com.carmensandiego.model.pista.Pista;
 
 public class Alemania extends Pais {
@@ -11,11 +11,11 @@ public class Alemania extends Pais {
 	public Alemania() {
 		super("Alemania","Pais de viejas costumbres, expertos en ingenieria automotor. "
 				+ "Su capital, Berlin, es una de las mas seguros del mundo. Nada que ocurra aqui no esta monitoreado.");
-		this.espacios.add(new Automotores());
+		lugares.agregarLugar(new Automotores());
 	}
 
 	@Override
-	public List<Pista> crearPistas() {
+	public List<Pista> crearMisPistas() {
 		List<Pista> pistasDelPais = new ArrayList<Pista>();
 		Pista pistaBandera = new Pista("Bandera Amarilla, Roja y Negra");
 		pistasDelPais.add(pistaBandera);

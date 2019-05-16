@@ -7,11 +7,10 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.carmensandiego.model.espacio.ClubNocturno;
-import com.carmensandiego.model.espacio.Embajada;
-import com.carmensandiego.model.espacio.Home;
-import com.carmensandiego.model.interfaz.Viajable;
-import com.carmensandiego.model.interfaz.Visitable;
+import com.carmensandiego.model.lugar.ClubNocturno;
+import com.carmensandiego.model.lugar.Embajada;
+import com.carmensandiego.model.lugar.Home;
+import com.carmensandiego.model.lugar.Lugar;
 import com.carmensandiego.model.pais.Alemania;
 import com.carmensandiego.model.pais.Argentina;
 import com.carmensandiego.model.pais.Australia;
@@ -40,8 +39,8 @@ public class PersonajeTest {
 		protagonista = new Protagonista();
 		protagonista.setNombre("Wincho");
 		protagonista.setDescripcion("El mejor detective de todos los tiempos");
-		Viajable paisDeOrigen = new Argentina();
-		Visitable hogar = new Home();
+		Pais paisDeOrigen = new Argentina();
+		Lugar hogar = new Home();
 		protagonista.viajar(paisDeOrigen);
 		protagonista.visitar(hogar);
 		
@@ -52,14 +51,14 @@ public class PersonajeTest {
 		antagonista = new Antagonista();
 		antagonista.setNombre("Carmen San Diego");
 		antagonista.setDescripcion("Dura y Bella criminal");
-		Viajable paisInicial = new Canada();
+		Pais paisInicial = new Canada();
 		antagonista.viajar(paisInicial);
 	}
 	
 	@Test
 	public void elPersonajeDebePoderViajarAUnVisitable() {
 		
-		Viajable australia = new Australia();
+		Pais australia = new Australia();
 		protagonista.viajar(australia);
 		Assert.assertEquals(australia, protagonista.getPaisActual());
 	}
@@ -73,7 +72,7 @@ public class PersonajeTest {
 	}
 	
 	@Test
-	public void elPersonajePrincipalDebePoderRecolectarPistasDePaisesYLugares() {
+	public void elPersonajePrincipalDebePoderRecolectarPistasEnLosLugaresDeLosPaises() {
 		
 		Integer cantidadPistasIniciales = this.protagonista.obtenerPistasAcumuladas().size();
 		
@@ -85,7 +84,7 @@ public class PersonajeTest {
 		Pista pista2 = new Pista("Pista 2");
 		
 		embajada.informarPista(pista1);
-		australia.acumularPista(pista2);
+		embajada.informarPista(pista2);
 		
 		australia.agregarEspacio(embajada);
 		australia.agregarEspacio(clubNocturno);
@@ -100,30 +99,37 @@ public class PersonajeTest {
 	}
 	
 	@Test
-	public void elAntagonistaDebeDropearPistasEnPaisesYLugares() {
+	public void elAntagonistaDebeDropearPistasEnLosLugaresDeLosPaisesAlViajar() {
 		Pista pista1 = new Pista("Pista 1");
 		Pista pista2 = new Pista("Pista 2");
 		
-		Australia australia = new Australia();
-		ClubNocturno clubNocturno = new ClubNocturno();
+		//El Antagonista comienza en Canada
+		//Abstraccion: viaja de ningun lugar a canada.
+		Canada origen = new Canada();
+		antagonista.viajar(origen);
 		
-		australia.agregarEspacio(clubNocturno);
+		//Toma otro destino, ejemplo Australia.
+		Australia destino = new Australia();
+		
+		//Canada no tiene pistas distribuidas sobre Australia
+		Integer cantidadPistasDistribuidas = sinPistas;
+		
+		for (Lugar lugar : origen.getLugares()) {
+			cantidadPistasDistribuidas+= lugar.darPistas().size();
+		}
+		
+		Assert.assertTrue(sinPistas.equals(cantidadPistasDistribuidas));	
 		
 		antagonista.acumularPista(pista1);
-		
-		antagonista.viajar(australia);
-		
-		Integer cantidadPistasAcumuladas = this.antagonista.tirarPistas().size();
-		
-		Assert.assertTrue(sinPistas.equals(cantidadPistasAcumuladas));
-		
 		antagonista.acumularPista(pista2);
 		
-		antagonista.visitar(clubNocturno);
+		antagonista.viajar(destino);
 		
-		cantidadPistasAcumuladas = this.antagonista.tirarPistas().size();
+		for (Lugar lugar : origen.getLugares()) {
+			cantidadPistasDistribuidas+= lugar.darPistas().size();
+		}
 		
-		Assert.assertTrue(sinPistas.equals(cantidadPistasAcumuladas));				
+		Assert.assertFalse(sinPistas.equals(cantidadPistasDistribuidas));				
 	}
 	
 	@Test

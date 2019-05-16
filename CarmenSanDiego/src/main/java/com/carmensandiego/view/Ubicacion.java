@@ -6,7 +6,7 @@ import java.util.List;
 import com.carmensandiego.controller.HandlerController;
 import com.carmensandiego.controller.StateController;
 import com.carmensandiego.model.Mundo;
-import com.carmensandiego.model.espacio.Espacio;
+import com.carmensandiego.model.lugar.Lugar;
 import com.carmensandiego.model.pais.Pais;
 import com.carmensandiego.model.parametria.ParametriaVista;
 import com.carmensandiego.model.pista.Pista;
@@ -39,7 +39,7 @@ public class Ubicacion {
 		Text time = new Text("Tiempo Restante: "+stateController.obtenerTiempoRestante());
 		
 		List<BotonEspacio> espacios = new ArrayList<BotonEspacio>();
-		for(Espacio espacio : mundo.obtenerEspaciosDisponiblesParaProtagonista()) {
+		for(Lugar espacio : mundo.obtenerEspaciosDisponiblesParaProtagonista()) {
 			espacios.add(new BotonEspacio(espacio));
 		}
 		

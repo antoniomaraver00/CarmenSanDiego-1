@@ -1,8 +1,8 @@
-package com.carmensandiego.model.espacio;
+package com.carmensandiego.model.lugar;
 
 import com.carmensandiego.model.personajes.PersonajeSecundario;
 
-public class PlazaMunicipal extends Espacio {
+public class PlazaMunicipal extends Lugar {
 	
 	public PlazaMunicipal() {
 		super();

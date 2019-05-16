@@ -1,8 +1,8 @@
-package com.carmensandiego.model.espacio;
+package com.carmensandiego.model.lugar;
 
 import com.carmensandiego.model.personajes.PersonajeSecundario;
 
-public class Embajada extends Espacio{
+public class Embajada extends Lugar{
 	
 	public Embajada() {
 		super();

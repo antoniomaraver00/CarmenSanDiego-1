@@ -1,16 +1,15 @@
 package com.carmensandiego.model.pais;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import com.carmensandiego.model.espacio.Aeropuerto;
-import com.carmensandiego.model.espacio.Espacio;
-import com.carmensandiego.model.interfaz.Viajable;
-import com.carmensandiego.model.interfaz.ViajeroInterface;
+import com.carmensandiego.model.interfaz.Viajero;
+import com.carmensandiego.model.lugar.Aeropuerto;
+import com.carmensandiego.model.lugar.Lugar;
+import com.carmensandiego.model.lugar.Lugares;
 import com.carmensandiego.model.pista.Pista;
 import com.carmensandiego.model.pista.PistasAcumuladas;
 
-public abstract class Pais implements Viajable{
+public abstract class Pais {
 	
 	protected String nombre;
 	
@@ -18,24 +17,25 @@ public abstract class Pais implements Viajable{
 	
 	protected String capital;
 	
-	//TODO: Hacer un mapa
-	protected List<Espacio> espacios;
+	protected Lugares lugares;
 	
 	protected PistasAcumuladas pistasAcumuladas;
 	
 	public Pais() {
 		this.nombre = "";
 		this.descripcion = "";
-		this.espacios = new ArrayList<Espacio>();
+		this.lugares = new Lugares();
 		this.pistasAcumuladas = new PistasAcumuladas();
+		this.acumularPistas(this.crearMisPistas());
 	}
 	
 	public Pais(String nombre, String descripcion) {
 		this.nombre = nombre;
 		this.descripcion = descripcion;
-		this.espacios = new ArrayList<Espacio>();
+		this.lugares = new Lugares();
 		this.pistasAcumuladas = new PistasAcumuladas();
-		this.espacios.add(new Aeropuerto(this.nombre));
+		this.lugares.agregarLugar(new Aeropuerto(this.nombre));
+		this.acumularPistas(this.crearMisPistas());
 	}
 
 	public String getNombre() {
@@ -46,48 +46,63 @@ public abstract class Pais implements Viajable{
 		return descripcion;
 	}
 	
-	public List<Espacio> getEspacios() {
-		return espacios;
+	public List<Lugar> getLugares() {
+		return lugares.getLugares();
 	}
 
-	public PistasAcumuladas getPistasAcumuladas() {
-		return pistasAcumuladas;
-	}
-
-	public void agregarEspacio(Espacio espacio) {
-		this.espacios.add(espacio);
+	public void agregarEspacio(Lugar lugar) {
+		lugares.agregarLugar(lugar);
 	}
 	
-	public void acumularPista(Pista pista) {
-		this.pistasAcumuladas.acumularPista(pista);
-	}
-	
+	/**
+	 * El pais acumula las pistas que recibe.
+	 * Las distribuye a sus lugares para que los personajes secundarios sean los informantes
+	 * PRE: No tiene
+	 * POST: Las pistas acumuladas se dan a los personaes principales en los lugares del pais.
+	 * @param pistas
+	 */
 	public void acumularPistas(List<Pista> pistas) {
-		this.pistasAcumuladas.acumularPistas(pistas);
+		pistasAcumuladas.acumularPistas(pistas);
 	}
 	
-	@Override
+	/**
+	 * Se otorgan las pistas acumuladas del del Pais.
+	 * Estas pistas son propias de cada Pais.
+	 * @return
+	 */
+	public List<Pista> darPistas(){
+		return pistasAcumuladas.tirarPistas();
+	}
+	
+	//TODO: Que no de pistas, que diga otra cosa.
+	@Deprecated
 	public List<Pista> protagonistaHaLlegado() {
-		return this.pistasAcumuladas.tirarPistas();
+		return pistasAcumuladas.tirarPistas();
 	}
 
-	@Override
-	public void antagonistaHaLlegado(List<Pista> pistas) {
-		this.pistasAcumuladas.acumularPistas(pistas);		
+	/**
+	 * Cuando el antagonista se ha dido, este ha dejado pistas en los distintos lugares.
+	 * Los personajes secundarios han acumulado esas pistas.
+	 * PRE:  Recibe un listado de pistas.
+	 * POST: Las pistas acumuladas se dan a los personaes secundarios en los lugares del pais.
+	 * @param pistas
+	 */
+	public void antagonistaHaPartido(List<Pista> pistas) {
+		this.lugares.distribuirPistas(pistas);	
 	}
 	
-	@Override
+	//TODO: Que haga otra cosa o vuela
+	@Deprecated
 	public Pais viajeroHaLlegado() {
 		return this;
 	}
 	
-	@Override
-	public void ubicarViajeroInicialmente(ViajeroInterface viajero) {
-		viajero.visitar(this.espacios.get(0));
+	public void ubicarViajeroInicialmente(Viajero viajero) {
+		viajero.visitar(lugares.obtenerLugar(0));
 	}
 	
 	/**
-	 * Agregar las pistas de cada pais
+	 * Agregar las pistas de cada pais.
 	 */
-	public abstract List<Pista> crearPistas();
+	protected abstract List<Pista> crearMisPistas();
 }

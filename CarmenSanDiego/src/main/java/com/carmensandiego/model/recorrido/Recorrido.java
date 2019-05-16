@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.carmensandiego.exception.SinProximosDestinosException;
+import com.carmensandiego.model.pais.NingunPais;
 import com.carmensandiego.model.pais.Pais;
 
 /**
@@ -41,7 +42,7 @@ public class Recorrido {
 	 */
 	public Pais obtenerProximoDestino() {
 		if (this.destinos.isEmpty())
-			throw new SinProximosDestinosException();
+			return new NingunPais();
 		return this.destinos.get(0);
 	}
 	

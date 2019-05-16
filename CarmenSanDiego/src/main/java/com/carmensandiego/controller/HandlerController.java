@@ -2,7 +2,7 @@ package com.carmensandiego.controller;
 
 import java.util.List;
 
-import com.carmensandiego.model.espacio.Espacio;
+import com.carmensandiego.model.lugar.Lugar;
 import com.carmensandiego.model.pais.Pais;
 import com.carmensandiego.view.BotonEspacio;
 import com.carmensandiego.view.BotonPais;
@@ -68,7 +68,7 @@ public class HandlerController {
 	public void crearHandlerUbicacion(List<BotonEspacio> espacios, List<BotonPais> paises, Stage primaryStage) {
 		for (BotonEspacio botonEspacio : espacios) {
 			Button boton = botonEspacio.getBoton();
-			Espacio espacio = botonEspacio.getEspacio();
+			Lugar espacio = botonEspacio.getEspacio();
 			boton.addEventFilter(MouseEvent.MOUSE_CLICKED, eventController.protagonistaVisita(espacio, primaryStage));
 		}
 		for (BotonPais botonPais : paises) {

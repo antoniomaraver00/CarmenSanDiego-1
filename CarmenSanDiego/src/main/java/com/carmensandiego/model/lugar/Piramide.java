@@ -1,8 +1,8 @@
-package com.carmensandiego.model.espacio;
+package com.carmensandiego.model.lugar;
 
 import com.carmensandiego.model.personajes.PersonajeSecundario;
 
-public class Piramide extends Espacio{
+public class Piramide extends Lugar{
 	
 	public Piramide() {
 		super();

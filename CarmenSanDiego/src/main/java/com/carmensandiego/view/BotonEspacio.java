@@ -1,15 +1,15 @@
 package com.carmensandiego.view;
 
-import com.carmensandiego.model.espacio.Espacio;
+import com.carmensandiego.model.lugar.Lugar;
 
 import javafx.scene.control.Button;
 
 public class BotonEspacio {
 	
 	private Button boton;
-	private Espacio espacio;
+	private Lugar espacio;
 	
-	public BotonEspacio(Espacio espacio) {
+	public BotonEspacio(Lugar espacio) {
 		this.espacio = espacio;
 		boton = new Button(espacio.getNombre());
 	}
@@ -18,7 +18,7 @@ public class BotonEspacio {
 		return boton;
 	}
 
-	public Espacio getEspacio() {
+	public Lugar getEspacio() {
 		return espacio;
 	}
 	
