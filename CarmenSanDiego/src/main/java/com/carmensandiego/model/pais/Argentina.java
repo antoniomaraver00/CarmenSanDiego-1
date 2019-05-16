@@ -1,5 +1,8 @@
 package com.carmensandiego.model.pais;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.carmensandiego.model.espacio.ClubNocturno;
 import com.carmensandiego.model.espacio.Home;
 import com.carmensandiego.model.pista.Pista;
@@ -11,17 +14,18 @@ public class Argentina extends Pais {
 				+ " mas bellas del mundo. Vivís acá.");
 		this.espacios.add(new Home());
 		this.espacios.add(new ClubNocturno());
-		this.crearPistas();
 	}
 
 	@Override
-	protected void crearPistas() {
+	public List<Pista> crearPistas() {
+		List<Pista> pistasDelPais = new ArrayList<Pista>();
 		Pista pistaBandera = new Pista("Bandera Celeste y Blanca");
+		pistasDelPais.add(pistaBandera);
 		Pista pistaEscudo = new Pista("Su escudo era un dorado y flameante corazon");
+		pistasDelPais.add(pistaEscudo);
 		Pista pistaFutbol = new Pista("Informacion sobre equipos de futbol y canciones populares");
-		this.acumularPista(pistaBandera);
-		this.acumularPista(pistaEscudo);
-		this.acumularPista(pistaFutbol);
+		pistasDelPais.add(pistaFutbol);
+		return pistasDelPais;
 	}
 
 }

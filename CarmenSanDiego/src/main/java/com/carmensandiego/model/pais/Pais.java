@@ -89,5 +89,5 @@ public abstract class Pais implements Viajable{
 	/**
 	 * Agregar las pistas de cada pais
 	 */
-	protected abstract void crearPistas();
+	public abstract List<Pista> crearPistas();
 }

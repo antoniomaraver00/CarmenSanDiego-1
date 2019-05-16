@@ -57,7 +57,7 @@ public class Antagonista extends Personaje implements ViajeroInterface{
 	@Override
 	public void viajar(Viajable destino) {
 		destino.antagonistaHaLlegado(pistasAcumuladas.tirarPistas());
-		this.paisActual = destino.viajeroHaLlegado();
+		paisActual = destino.viajeroHaLlegado();
 		destino.ubicarViajeroInicialmente(this);
 	}
 
@@ -120,7 +120,7 @@ public class Antagonista extends Personaje implements ViajeroInterface{
 	 */
 	public void seguirRecorrido(Viajable destinoProtagonista) {
 		Pais proximoDestino = this.recorrido.obtenerProximoDestino();
-		this.pistasAcumuladas.acumularPistas(proximoDestino.getPistasAcumuladas().tirarPistas());
+		pistasAcumuladas.acumularPistas(proximoDestino.crearPistas());
 		this.paisActual.acumularPistas(this.tirarPistas());
 		this.viajar(proximoDestino);
 		this.recorrido.registrarUltimoDestino();

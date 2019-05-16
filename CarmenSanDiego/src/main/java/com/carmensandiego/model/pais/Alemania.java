@@ -1,5 +1,8 @@
 package com.carmensandiego.model.pais;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.carmensandiego.model.espacio.Automotores;
 import com.carmensandiego.model.pista.Pista;
 
@@ -9,17 +12,18 @@ public class Alemania extends Pais {
 		super("Alemania","Pais de viejas costumbres, expertos en ingenieria automotor. "
 				+ "Su capital, Berlin, es una de las mas seguros del mundo. Nada que ocurra aqui no esta monitoreado.");
 		this.espacios.add(new Automotores());
-		this.crearPistas();
 	}
 
 	@Override
-	protected void crearPistas() {
+	public List<Pista> crearPistas() {
+		List<Pista> pistasDelPais = new ArrayList<Pista>();
 		Pista pistaBandera = new Pista("Bandera Amarilla, Roja y Negra");
+		pistasDelPais.add(pistaBandera);
 		Pista pistaAuto = new Pista("Conducia un auto de alta gama");
+		pistasDelPais.add(pistaAuto);
 		Pista pistaSeguridad = new Pista("Inteligencia a determinado que buscaba un software de reconocimiento facial");
-		this.acumularPista(pistaBandera);
-		this.acumularPista(pistaAuto);
-		this.acumularPista(pistaSeguridad);
+		pistasDelPais.add(pistaSeguridad);
+		return pistasDelPais;
 	}
 
 }
