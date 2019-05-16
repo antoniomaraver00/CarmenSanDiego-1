@@ -52,19 +52,21 @@ public class Protagonista extends Personaje implements Viajero{
 	/**
 	 * El protagonista viaja a un viajable para buscar pistas.
 	 * Actualiza su posicion.
-	 * PRE:  Recibe un destino
-	 * POST: Actualizo su Pais y su Espacio Actual.
+	 * PRE:  Recibe un destino valido o no.
+	 * POST: Actualiza su Pais y su Espacio Actual en caso de ser valido.
 	 */
 	@Override
 	public void viajar(Pais destino) {
-		this.paisActual = destino;
-		destino.ubicarViajeroInicialmente(this);
+		if(destino.esValido()) {
+			paisActual = destino;
+			destino.ubicarViajeroInicialmente(this);
+		}
 	}
 
 	@Override
 	public void visitar(Lugar destino) {
-		this.pistasAcumuladas.acumularPistas(destino.serVisitadoPorProtagonista());
-		this.espacioActual = destino.serVisitado();
+		pistasAcumuladas.acumularPistas(destino.serVisitadoPorProtagonista());
+		espacioActual = destino.serVisitado();
 	}
 	
 }

@@ -18,5 +18,10 @@ public class Canada extends Pais{
 		return new ArrayList<Pista>();
 		
 	}
+	
+	@Override
+	public Boolean esValido() {
+		return true;
+	}
 
 }

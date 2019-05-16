@@ -27,5 +27,10 @@ public class Argentina extends Pais {
 		pistasDelPais.add(pistaFutbol);
 		return pistasDelPais;
 	}
+	
+	@Override
+	public Boolean esValido() {
+		return true;
+	}
 
 }

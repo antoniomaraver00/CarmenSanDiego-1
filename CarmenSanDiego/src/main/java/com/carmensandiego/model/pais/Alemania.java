@@ -26,4 +26,9 @@ public class Alemania extends Pais {
 		return pistasDelPais;
 	}
 
+	@Override
+	public Boolean esValido() {
+		return true;
+	}
+
 }

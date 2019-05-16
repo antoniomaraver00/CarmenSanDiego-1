@@ -26,5 +26,10 @@ public class Australia extends Pais {
 		pistasDelPais.add(pistAnimales);
 		return pistasDelPais;
 	}
+	
+	@Override
+	public Boolean esValido() {
+		return true;
+	}
 
 }

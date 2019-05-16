@@ -25,4 +25,9 @@ public class Egipto extends Pais {
 		return pistasDelPais;
 	}
 
+	@Override
+	public Boolean esValido() {
+		return true;
+	}
+
 }

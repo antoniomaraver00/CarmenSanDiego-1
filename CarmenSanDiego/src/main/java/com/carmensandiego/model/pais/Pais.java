@@ -2,6 +2,7 @@ package com.carmensandiego.model.pais;
 
 import java.util.List;
 
+import com.carmensandiego.alerta.Alerta;
 import com.carmensandiego.model.interfaz.Viajero;
 import com.carmensandiego.model.lugar.Aeropuerto;
 import com.carmensandiego.model.lugar.Lugar;
@@ -20,6 +21,8 @@ public abstract class Pais {
 	protected Lugares lugares;
 	
 	protected PistasAcumuladas pistasAcumuladas;
+	
+	protected Alerta alerta;
 	
 	public Pais() {
 		this.nombre = "";
@@ -50,7 +53,7 @@ public abstract class Pais {
 		return lugares.getLugares();
 	}
 
-	public void agregarEspacio(Lugar lugar) {
+	public void agregarLugar(Lugar lugar) {
 		lugares.agregarLugar(lugar);
 	}
 	
@@ -66,7 +69,7 @@ public abstract class Pais {
 	}
 	
 	/**
-	 * Se otorgan las pistas acumuladas del del Pais.
+	 * Se otorgan las pistas acumuladas del Pais.
 	 * Estas pistas son propias de cada Pais.
 	 * @return
 	 */
@@ -74,10 +77,14 @@ public abstract class Pais {
 		return pistasAcumuladas.tirarPistas();
 	}
 	
-	//TODO: Que no de pistas, que diga otra cosa.
-	@Deprecated
-	public List<Pista> protagonistaHaLlegado() {
-		return pistasAcumuladas.tirarPistas();
+	/**
+	 * Cuando el Protagonista llega se deja una alerta de algun evento importante.
+	 * PRE: No tiene.
+	 * POST: El Protagonista recibe una alerta de algo importante o nada importante.
+	 * @return
+	 */
+	public Alerta protagonistaHaLlegado() {
+		return alerta;
 	}
 
 	/**
@@ -91,12 +98,10 @@ public abstract class Pais {
 		this.lugares.distribuirPistas(pistas);	
 	}
 	
-	//TODO: Que haga otra cosa o vuela
-	@Deprecated
-	public Pais viajeroHaLlegado() {
-		return this;
-	}
-	
+	/**
+	 * Al viajar debe estar inicialmente en el primer lugar disponible.
+	 * @param viajero
+	 */
 	public void ubicarViajeroInicialmente(Viajero viajero) {
 		viajero.visitar(lugares.obtenerLugar(0));
 	}
@@ -105,4 +110,10 @@ public abstract class Pais {
 	 * Agregar las pistas de cada pais.
 	 */
 	protected abstract List<Pista> crearMisPistas();
+	
+	/**
+	 * Retorna si el pais es valido
+	 * @return
+	 */
+	public abstract Boolean esValido();
 }

@@ -50,13 +50,20 @@ public class Antagonista extends Personaje implements Viajero{
 
 	/**
 	 * El Antagonista parte del Pais Actual y viaja a un Destino
-	 * Deja caer Pistas que pueden ayudar al Protagonista. 
+	 * Deja caer Pistas que pueden ayudar al Protagonista.
+	 * PRE: Recibe un destino valido o no.
+	 * POST: Pais de Origen tiene las pistas del Pais Desntino.
+	 * 		 Si el Desntino es valido el Antagonista actualiza su posicion.
+	 * 	     En otro caso deja una alerta al Pais Actual
 	 */
 	@Override
 	public void viajar(Pais destino) {
-		paisActual.antagonistaHaPartido(destino.darPistas());
-		paisActual = destino;
-		destino.ubicarViajeroInicialmente(this);
+		if(destino.esValido()) {
+			paisActual.antagonistaHaPartido(destino.darPistas());
+			paisActual = destino;
+		}else {
+			
+		}
 	}
 
 	/**

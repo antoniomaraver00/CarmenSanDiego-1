@@ -86,8 +86,8 @@ public class PersonajeTest {
 		embajada.informarPista(pista1);
 		embajada.informarPista(pista2);
 		
-		australia.agregarEspacio(embajada);
-		australia.agregarEspacio(clubNocturno);
+		australia.agregarLugar(embajada);
+		australia.agregarLugar(clubNocturno);
 		
 		this.protagonista.viajar(australia);
 		this.protagonista.visitar(clubNocturno);

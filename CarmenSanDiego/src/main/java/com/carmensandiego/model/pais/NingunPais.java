@@ -16,5 +16,10 @@ public class NingunPais extends Pais {
 		//Devuelve una lista vacia.
 		return new ArrayList<Pista>();
 	}
+	
+	@Override
+	public Boolean esValido() {
+		return false;
+	}
 
 }
