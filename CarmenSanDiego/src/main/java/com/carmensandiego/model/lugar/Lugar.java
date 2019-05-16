@@ -1,13 +1,14 @@
-package com.carmensandiego.model.espacio;
+package com.carmensandiego.model.lugar;
 
 import java.util.List;
 
-import com.carmensandiego.model.interfaz.ViajeroInterface;
-import com.carmensandiego.model.interfaz.Visitable;
+import com.carmensandiego.model.interfaz.Viajero;
 import com.carmensandiego.model.personajes.PersonajeSecundario;
 import com.carmensandiego.model.pista.Pista;
 
-public abstract class Espacio implements Visitable{
+public abstract class Lugar {
+	
+	protected String id;
 	
 	protected String nombre;
 	
@@ -15,12 +16,17 @@ public abstract class Espacio implements Visitable{
 	
 	protected PersonajeSecundario personajeSecundario;
 	
-	protected ViajeroInterface visita;
+	protected Viajero visita;
 
-	public Espacio() {
+	public Lugar() {
+		this.id = "";
 		this.nombre = "";
 		this.descripcion = "";
 		this.personajeSecundario = new PersonajeSecundario();
+	}
+	
+	public String getId() {
+		return id;
 	}
 	
 	public String getNombre() {
@@ -40,21 +46,30 @@ public abstract class Espacio implements Visitable{
 	}
 	
 	public void informarPistas(List<Pista> pistas) {
-		this.personajeSecundario.agregarPistas(pistas);
+		personajeSecundario.acumularPistas(pistas);
 	}
 	
 	public void informarPista(Pista pista) {
-		this.personajeSecundario.agregarPista(pista);
+		personajeSecundario.acumularPista(pista);
 	}
 	
-	@Override
+	public List<Pista> darPistas() {
+		return personajeSecundario.darPistas();
+	}
+	
+	//TODO: Borrar o que haga otra cosa
 	public List<Pista> serVisitadoPorProtagonista() {
 		return this.personajeSecundario.darPistas();
 	}
 
-	@Override
+	//TODO: Borrar o que haga otra cosa
 	public void serVisitadoPorAntagonista(List<Pista> pistasDelAntagonista) {
-		this.personajeSecundario.agregarPistas(pistasDelAntagonista);
+		this.personajeSecundario.acumularPistas(pistasDelAntagonista);
+	}
+	
+	//TODO: que haga otra cosa o vuela
+	public Lugar serVisitado() {
+		return this;
 	}
 
 }

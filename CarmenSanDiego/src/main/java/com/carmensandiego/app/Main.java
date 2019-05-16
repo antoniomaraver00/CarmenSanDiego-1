@@ -1,5 +1,6 @@
-package com.carmensandiego.controller;
+package com.carmensandiego.app;
 
+import com.carmensandiego.controller.InitController;
 import com.carmensandiego.view.Inicio;
 
 import javafx.application.Application;
@@ -11,18 +12,16 @@ import javafx.stage.Stage;
  * @author martin
  *
  */
-public class MainController extends Application{
+public class Main extends Application{
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		
 		InitController initController = InitController.getSingletonInstance();
 		initController.crearMundo();
-		initController = null;
 		
 		Inicio inicio = new Inicio();
 		inicio.mostrarPantallaInicio(primaryStage);
-		inicio = null;
 	}
 	
 	/**

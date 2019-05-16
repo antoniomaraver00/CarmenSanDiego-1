@@ -1,16 +1,24 @@
 package carmensandiego.test.unittest;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.carmensandiego.model.espacio.ClubNocturno;
-import com.carmensandiego.model.espacio.Embajada;
-import com.carmensandiego.model.espacio.Home;
-import com.carmensandiego.model.interfaz.Viajable;
-import com.carmensandiego.model.interfaz.Visitable;
+import com.carmensandiego.model.lugar.ClubNocturno;
+import com.carmensandiego.model.lugar.Embajada;
+import com.carmensandiego.model.lugar.Home;
+import com.carmensandiego.model.lugar.Lugar;
+import com.carmensandiego.model.pais.Alemania;
 import com.carmensandiego.model.pais.Argentina;
-import com.carmensandiego.model.pais.Espania;
+import com.carmensandiego.model.pais.Australia;
+import com.carmensandiego.model.pais.Canada;
+import com.carmensandiego.model.pais.ClavePais;
+import com.carmensandiego.model.pais.Egipto;
+import com.carmensandiego.model.pais.NingunPais;
+import com.carmensandiego.model.pais.Pais;
 import com.carmensandiego.model.personajes.Antagonista;
 import com.carmensandiego.model.personajes.PersonajeSecundario;
 import com.carmensandiego.model.personajes.Protagonista;
@@ -22,13 +30,17 @@ public class PersonajeTest {
 	private Antagonista antagonista;
 	private PersonajeSecundario secundario;
 	
+	private static Integer cantidadPaises = 5;
+	private static Integer paisesDestino = 4;
+	private static Integer sinPistas = 0;
+	
 	@Before
 	public void initProtagonista() {
 		protagonista = new Protagonista();
 		protagonista.setNombre("Wincho");
 		protagonista.setDescripcion("El mejor detective de todos los tiempos");
-		Viajable paisDeOrigen = new Argentina();
-		Visitable hogar = new Home();
+		Pais paisDeOrigen = new Argentina();
+		Lugar hogar = new Home();
 		protagonista.viajar(paisDeOrigen);
 		protagonista.visitar(hogar);
 		
@@ -39,18 +51,16 @@ public class PersonajeTest {
 		antagonista = new Antagonista();
 		antagonista.setNombre("Carmen San Diego");
 		antagonista.setDescripcion("Dura y Bella criminal");
-		Viajable paisInicial = new Argentina();
-		Visitable hogar = new Home();
+		Pais paisInicial = new Canada();
 		antagonista.viajar(paisInicial);
-		antagonista.visitar(hogar);
 	}
 	
 	@Test
 	public void elPersonajeDebePoderViajarAUnVisitable() {
 		
-		Viajable espania = new Espania();
-		protagonista.viajar(espania);
-		Assert.assertEquals(espania, protagonista.enQuePaisEstoy());
+		Pais australia = new Australia();
+		protagonista.viajar(australia);
+		Assert.assertEquals(australia, protagonista.getPaisActual());
 	}
 	
 	@Test
@@ -58,13 +68,15 @@ public class PersonajeTest {
 		
 		ClubNocturno clubNocturno = new ClubNocturno();
 		protagonista.visitar(clubNocturno);
-		Assert.assertEquals(clubNocturno,protagonista.enQueLugarEstoy());
+		Assert.assertEquals(clubNocturno,protagonista.getEspacioActual());
 	}
 	
 	@Test
-	public void elPersonajePrincipalDebePoderRecolectarPistasDePaisesYLugares() {
+	public void elPersonajePrincipalDebePoderRecolectarPistasEnLosLugaresDeLosPaises() {
 		
-		Espania espania = new Espania();
+		Integer cantidadPistasIniciales = this.protagonista.obtenerPistasAcumuladas().size();
+		
+		Australia australia = new Australia();
 		ClubNocturno clubNocturno = new ClubNocturno();
 		Embajada embajada = new Embajada();
 		
@@ -72,46 +84,70 @@ public class PersonajeTest {
 		Pista pista2 = new Pista("Pista 2");
 		
 		embajada.informarPista(pista1);
-		espania.agregarPista(pista2);
+		embajada.informarPista(pista2);
 		
-		espania.agregarEspacio(embajada);
-		espania.agregarEspacio(clubNocturno);
+		australia.agregarLugar(embajada);
+		australia.agregarLugar(clubNocturno);
 		
-		this.protagonista.viajar(espania);
+		this.protagonista.viajar(australia);
 		this.protagonista.visitar(clubNocturno);
 		this.protagonista.visitar(embajada);
 		
-		Integer cantidadPistasAcumuladas = this.protagonista.obtenerPistas().size();
+		Integer cantidadPistasAcumuladas = this.protagonista.obtenerPistasAcumuladas().size();
 		
-		Assert.assertTrue(cantidadPistasAcumuladas.equals(2));
-		
+		Assert.assertTrue(cantidadPistasAcumuladas > cantidadPistasIniciales);
 	}
 	
 	@Test
-	public void elAntagonistaDebeDropearPistasEnPaisesYLugares() {
+	public void elAntagonistaDebeDropearPistasEnLosLugaresDeLosPaisesAlViajar() {
 		Pista pista1 = new Pista("Pista 1");
 		Pista pista2 = new Pista("Pista 2");
 		
-		Espania espania = new Espania();
-		ClubNocturno clubNocturno = new ClubNocturno();
+		//El Antagonista comienza en Canada
+		//Abstraccion: viaja de ningun lugar a canada.
+		Canada origen = new Canada();
+		antagonista.viajar(origen);
 		
-		espania.agregarEspacio(clubNocturno);
+		//Toma otro destino, ejemplo Australia.
+		Australia destino = new Australia();
 		
-		antagonista.setPista(pista1);
+		//Canada no tiene pistas distribuidas sobre Australia
+		Integer cantidadPistasDistribuidas = sinPistas;
 		
-		antagonista.viajar(espania);
+		for (Lugar lugar : origen.getLugares()) {
+			cantidadPistasDistribuidas+= lugar.darPistas().size();
+		}
 		
-		Integer cantidadPistasAcumuladas = this.antagonista.obtenerPistas().size();
+		Assert.assertTrue(sinPistas.equals(cantidadPistasDistribuidas));	
 		
-		Assert.assertTrue(cantidadPistasAcumuladas.equals(0));
+		antagonista.acumularPista(pista1);
+		antagonista.acumularPista(pista2);
 		
-		antagonista.setPista(pista2);
+		antagonista.viajar(destino);
 		
-		antagonista.visitar(clubNocturno);
+		for (Lugar lugar : origen.getLugares()) {
+			cantidadPistasDistribuidas+= lugar.darPistas().size();
+		}
 		
-		cantidadPistasAcumuladas = this.antagonista.obtenerPistas().size();
-		
-		Assert.assertTrue(cantidadPistasAcumuladas.equals(0));				
+		Assert.assertFalse(sinPistas.equals(cantidadPistasDistribuidas));				
+	}
+	
+	@Test
+	public void antagonistaEligeRecorridoNoDebeIncluirPaisActual() {
+		Map<String,Pais> paises = new HashMap<String,Pais>();
+		paises.put(ClavePais.ALEMANIA.getKey(),new Argentina());
+		paises.put(ClavePais.ARGENTINA.getKey(),new Alemania());
+		paises.put(ClavePais.AUSTRALIA.getKey(),new Australia());
+		paises.put(ClavePais.CANADA.getKey(),new Canada());
+		paises.put(ClavePais.EGIPTO.getKey(),new Egipto());
+		antagonista.elegirRecorrido(paises);
+		//Consultar y avanzar sobre los destinos
+		int count = 0;
+		while(count < paisesDestino) {
+			Assert.assertFalse(antagonista.getPaisActual().getNombre().equals(antagonista.obtenerProximoDestino().getNombre()));
+			antagonista.seguirRecorrido(new NingunPais());
+			count++;
+		}
 	}
 
 }

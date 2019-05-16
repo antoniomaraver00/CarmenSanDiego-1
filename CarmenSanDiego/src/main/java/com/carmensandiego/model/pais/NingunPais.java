@@ -1,19 +1,25 @@
 package com.carmensandiego.model.pais;
 
-import com.carmensandiego.model.interfaz.ViajeroInterface;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.carmensandiego.model.pista.Pista;
 
 public class NingunPais extends Pais {
-
-	@Override
-	public void viajeroHaLlegado(ViajeroInterface viajero) {
-		// TODO Auto-generated method stub
-		
+	
+	public NingunPais() {
+		super();
 	}
 
 	@Override
-	public void viajeroSeHaIdo(ViajeroInterface viajero) {
-		// TODO Auto-generated method stub
-		
+	public List<Pista> crearMisPistas() {
+		//Devuelve una lista vacia.
+		return new ArrayList<Pista>();
+	}
+	
+	@Override
+	public Boolean esValido() {
+		return false;
 	}
 
 }

@@ -19,7 +19,7 @@ public class PersonajeSecundario extends Personaje{
 		this.pistas = new PistasAcumuladas();
 	}
 	
-	public void agregarPista(Pista pista) {
+	public void acumularPista(Pista pista) {
 		this.pistas.acumularPista(pista);
 	}
 	
@@ -27,7 +27,7 @@ public class PersonajeSecundario extends Personaje{
 		return this.pistas.tirarPistas();
 	}
 
-	public void agregarPistas(List<Pista> pistas) {
+	public void acumularPistas(List<Pista> pistas) {
 		this.pistas.acumularPistas(pistas);
 	}
 }
