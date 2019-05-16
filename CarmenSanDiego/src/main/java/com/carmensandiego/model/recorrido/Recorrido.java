@@ -3,7 +3,6 @@ package com.carmensandiego.model.recorrido;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.carmensandiego.exception.SinProximosDestinosException;
 import com.carmensandiego.model.pais.NingunPais;
 import com.carmensandiego.model.pais.Pais;
 
@@ -51,7 +50,7 @@ public class Recorrido {
 	 * @param destino
 	 */
 	public void agregarDestino(Pais destino) {
-		this.destinos.add(destino);
+		destinos.add(destino);
 	}
 	
 	/**
@@ -61,9 +60,8 @@ public class Recorrido {
 	 * @param destino
 	 */
 	public void registrarUltimoDestino() {
-		if (this.destinos.isEmpty())
-			throw new SinProximosDestinosException();
-		this.visitados.add(this.destinos.remove(0));
+		if (!destinos.isEmpty())
+			this.visitados.add(destinos.remove(0));
 	}
 
 }
