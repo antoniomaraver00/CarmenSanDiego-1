@@ -111,6 +111,7 @@ public class EventController {
 				stateController.moverAntagonista(pais);
 				Viajero protagonista = mundo.getProtagonista();
 				protagonista.viajar(pais);
+				stateController.alertarProtagonista(pais);
 				stateController.avanzarTiempo(ParametriaTime.TRAVEL_TIME.getValue());
 				if(stateController.finDeJuego()){
 					Fin fin = new Fin();

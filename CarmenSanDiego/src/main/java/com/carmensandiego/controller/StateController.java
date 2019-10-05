@@ -66,4 +66,9 @@ public class StateController {
 		return this.timer.getTiempoRestante();
 	}
 
+	public void alertarProtagonista(Pais pais) {
+		if(pais.getAlerta() != null)
+			pais.alertarProtagonista();
+	}
+
 }

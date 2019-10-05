@@ -52,6 +52,14 @@ public abstract class Pais {
 	public List<Lugar> getLugares() {
 		return lugares.getLugares();
 	}
+	
+	public Alerta getAlerta() {
+		return alerta;
+	}
+	
+	public void setAlerta(Alerta alerta) {
+		this.alerta = alerta;
+	}
 
 	public void agregarLugar(Lugar lugar) {
 		lugares.agregarLugar(lugar);
@@ -116,4 +124,11 @@ public abstract class Pais {
 	 * @return
 	 */
 	public abstract Boolean esValido();
+
+	public void alertarProtagonista() {
+		Pista pista1 = new Pista("He visto a quien buscas, se encuentra en la ciudad!");
+		Pista pista2 = new Pista("Alguien muy sospechoso esta rondando por estos lugares");
+		Pista pista3 = new Pista("Algo raro esta ocurriendo aqui");
+		
+	}
 }

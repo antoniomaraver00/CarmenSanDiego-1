@@ -3,6 +3,7 @@ package com.carmensandiego.model.personajes;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.carmensandiego.alerta.Alerta;
 import com.carmensandiego.model.interfaz.Viajero;
 import com.carmensandiego.model.lugar.Lugar;
 import com.carmensandiego.model.lugar.NingunEspacio;

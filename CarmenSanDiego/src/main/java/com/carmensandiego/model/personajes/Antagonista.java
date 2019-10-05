@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import com.carmensandiego.alerta.Alerta;
 import com.carmensandiego.model.interfaz.Viajero;
 import com.carmensandiego.model.lugar.Lugar;
 import com.carmensandiego.model.lugar.NingunEspacio;
@@ -62,7 +63,7 @@ public class Antagonista extends Personaje implements Viajero{
 			paisActual.antagonistaHaPartido(destino.darPistas());
 			paisActual = destino;
 		}else {
-			
+			paisActual.setAlerta(new Alerta("Carmen Sandiego esta en la ciudad!"));
 		}
 	}
 
